@@ -1,0 +1,36 @@
+/* Formulaire */
+.form {
+  background-color: #fff;
+  padding: 3rem;
+  border-radius: 5px;
+  box-shadow: 3px 4px 0px 0px #9a191d73;
+}
+
+/* Section bienvenue */
+.welcome {
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.welcome h1 {
+  margin-bottom: 0.5rem;
+  color: #9a191e;
+}
+
+/* Alignement du bouton au centre */
+.centerContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Style du lien mot de passe oublié */
+.forgotPassword {
+  margin-top: 1rem;
+  text-align: center;
+  color: #9a191e;
+}
+
+.forgotPassword:hover {
+  text-decoration: underline;
+}

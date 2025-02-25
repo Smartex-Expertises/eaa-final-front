@@ -1,0 +1,49 @@
+.container {
+  padding: 20px;
+  background-color: #f9f9f9;
+}
+
+.title {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.avisList {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.alert {
+  background-color: #d6d6d624; /* Gris clair */
+  color: #333; /* Texte sombre pour contraster avec le fond */
+  border-radius: 5px;
+  padding: 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border: 1px solid #bdbdbd; /* Bordure plus claire que le fond */
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+.alertContent {
+  flex-grow: 1;
+}
+
+.timestamp {
+  font-size: 0.9rem;
+  color: #6c757d; /* Couleur neutre pour la date */
+}
+
+.alert p {
+  margin: 0;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}

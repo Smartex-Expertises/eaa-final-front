@@ -1,0 +1,252 @@
+.filterContainer {
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.searchBar {
+  border: 1px solid #2c3e50;
+  padding: 10px;
+  font-size: 16px;
+  border-radius: 5px;
+  background-color: #fff;
+  width: 30%;
+}
+
+.searchBar:focus {
+  outline: 0;
+  background: #fff;
+  box-shadow: 0 0 0 0 #fff inset, #2c3e50 0 0 0 2px;
+}
+
+.selectFilter {
+  cursor: pointer;
+  padding: 10px;
+  font-size: 16px;
+  border-radius: 5px;
+  background-color: #fff;
+  margin-left: 0.5rem;
+  border: 1px solid #2c3e50;
+}
+
+.selectFilter:focus {
+  outline: 0;
+  background: #fff;
+  box-shadow: 0 0 0 0 #fff inset, #2c3e50 0 0 0 2px;
+}
+
+.tableWrapper {
+  overflow-x: auto;
+  margin-top: 20px;
+}
+
+.styledTable {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: #fff;
+  box-shadow: 0 3px 1px -2px rgb(0 0 0 / 16%), 0 2px 2px 0 rgb(0 0 0 / 11%),
+    0 1px 5px 0 rgb(0 0 0 / 10%);
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.styledTable thead {
+  background-color: #2c3e50;
+  color: #fff;
+}
+
+.styledTable th,
+.styledTable td {
+  padding: 12px 20px;
+  text-align: left;
+}
+
+.styledTable tbody tr {
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  cursor: pointer;
+}
+
+.styledTable tbody tr:hover {
+  background-color: #f4f4f4;
+  transform: scale(1.01);
+}
+
+.alternateRow {
+  background-color: #f9f9f9;
+}
+
+.pagination {
+  margin-top: 0.5rem;
+  float: right;
+}
+
+.pagination button {
+  cursor: pointer;
+  margin-left: 0.5rem;
+  padding: 0.5rem;
+  font-size: 18px;
+  outline: #2c3e50;
+  color: #2c3e50;
+}
+
+.emptyText {
+  text-align: center;
+  color: crimson;
+  margin-top: 4rem;
+}
+
+.btnAction {
+  width: 150px;
+  height: 25px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  border: none;
+  border-radius: 5px;
+  box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.15);
+  transition: 200ms;
+  margin-bottom: 0.3rem;
+}
+
+.btnAction,
+.btnAction span {
+  transition: 200ms;
+}
+
+.text {
+  transform: translateX(35px);
+  color: white;
+  font-weight: bold;
+}
+
+.icon {
+  position: absolute;
+  border-left: 1px solid #c41b1b;
+  transform: translateX(110px);
+  height: 25px;
+  width: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btnAction svg {
+  width: 15px;
+  fill: #eee;
+}
+
+.btnAction:hover {
+  background: #ff3636;
+}
+
+.btnAction:hover .text {
+  color: transparent;
+}
+
+.btnAction:hover .icon {
+  width: 150px;
+  border-left: none;
+  transform: translateX(0);
+}
+
+.btnAction:focus {
+  outline: none;
+}
+
+.btnAction:active .icon svg {
+  transform: scale(0.8);
+}
+
+/* Bouton Voir */
+.btnVoir {
+  background-color: #007bff;
+}
+
+.btnVoir:hover {
+  background-color: #0056b3;
+}
+
+/* Bouton Faire */
+.btnFaire {
+  background-color: #28a745;
+}
+
+.btnFaire:hover {
+  background-color: #218838;
+}
+
+/* Bouton Valider */
+.btnValider {
+  background-color: #ffc107;
+}
+
+.btnValider:hover {
+  background-color: #e0a800;
+}
+
+/* Bouton Delete */
+.btnDelete {
+  background-color: #dc3545;
+}
+
+.btnDelete:hover {
+  background-color: #c82333;
+}
+
+.noData {
+  text-align: center;
+}
+
+.disabled {
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+.statusPending {
+  color: #ffc107;
+}
+
+.statusValidated {
+  color: #28a745;
+}
+
+.disabled {
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+.link {
+  text-decoration: none;
+  color: #007bff;
+  font-weight: 600;
+  transition: color 0.3s ease, text-decoration 0.3s ease;
+  display: block;
+  margin-bottom: 10px;
+  font-size: 16px;
+}
+
+.link:hover {
+  color: #0056b3;
+  text-decoration: underline;
+}
+
+.right{
+  display: flex;
+  justify-content: space-between;
+}
+
+.btnHide{
+  font-size: 2rem;
+  background: transparent;
+  border: none;
+  margin: 1rem;
+  color: gray;
+  transition: 300ms ease-in-out;
+  cursor: pointer;
+}
+
+.btnHide:hover{
+  color: crimson;
+  transform: scale(1.2);
+}

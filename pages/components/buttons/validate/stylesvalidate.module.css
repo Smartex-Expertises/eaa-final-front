@@ -1,0 +1,20 @@
+.submitButton {
+  width: 70%;
+  margin: auto;
+  border: 2px solid #477d33;
+  padding: 0.7rem;
+  transition: 0.3s ease-in-out all;
+  cursor: pointer;
+  background-color: #477d33;
+  font-weight: 700;
+  border-radius: 5px;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.3rem;
+}
+
+.submitButton:hover {
+  box-shadow: 0 0 0 0 #fff inset, #477d33 0 0 0 3px;
+}

@@ -1,0 +1,344 @@
+import React, { useState } from "react";
+import { IoArrowUndo, IoArrowRedoSharp, IoEye, IoBulb } from "react-icons/io5";
+import ThemeDisplay from "@/pages/components/modals/themeDisplay/ThemeDisplay";
+import ModalAddAvis from "@/pages/components/modals/modalAddAvis/ModalAddAvis";
+import ModalAvisExpert from "@/pages/components/modals/modalAvisExpert/ModalAvisExpert";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import styles from "../../table.module.css";
+
+interface FichiersMaster {
+  id_fichiers_master: number;
+  memoire_analytique: string | null;
+  dossier_esquisse: string | null;
+  validation_mis_parcours: number;
+  memoire_final: string | null;
+  apd: string | null;
+  validation_finale: number;
+}
+
+interface AvisExpert {
+  id_avis: number;
+  avis: string;
+  created_at: string;
+}
+
+interface Suivi {
+  id_suivi: number;
+  type_suivi: string;
+  rapport_actif: number;
+  theme: { theme: string; status: number } | null;
+  fichiers_master: FichiersMaster;
+  avis_experts: AvisExpert[];
+}
+
+interface Etudiant {
+  matricule: string;
+  nom: string;
+  prenom: string;
+  email: string;
+  telephone: string;
+  classe: string;
+  suivis_memoire: Suivi[];
+}
+
+interface TableSuiviExpertMasterProps {
+  data: Etudiant[];
+}
+
+const TableSuiviExpertMaster: React.FC<TableSuiviExpertMasterProps> = ({
+  data,
+}) => {
+  const [currentPage, setCurrentPage] = useState<number>(1);
+  const itemsPerPage = 10;
+  const [searchQuery, setSearchQuery] = useState<string>("");
+
+  const [activeModal, setActiveModal] = useState<
+    "theme" | "avis" | "avisExpert" | null
+  >(null);
+  const [themeToShow, setThemeToShow] = useState<string | null>(null);
+  const [selectedSuiviId, setSelectedSuiviId] = useState<number | null>(null);
+  const [avisExpertsToShow, setAvisExpertsToShow] = useState<
+    AvisExpert[] | null
+  >(null);
+  const filteredData = data.filter((etudiant) => {
+    const searchLower = searchQuery.toLowerCase();
+    return (
+      etudiant.nom.toLowerCase().includes(searchLower) ||
+      etudiant.prenom.toLowerCase().includes(searchLower) ||
+      etudiant.matricule.toLowerCase().includes(searchLower)
+    );
+  });
+
+  const startIndex = (currentPage - 1) * itemsPerPage;
+  const endIndex = startIndex + itemsPerPage;
+  const currentData = filteredData.slice(startIndex, endIndex);
+  const totalPages = Math.ceil(filteredData.length / itemsPerPage);
+
+  const changePage = (page: number) => {
+    if (page >= 1 && page <= totalPages) {
+      setCurrentPage(page);
+    }
+  };
+
+  const handleViewTheme = (theme: string | null, suiviId: number) => {
+    setThemeToShow(theme);
+    setSelectedSuiviId(suiviId);
+    setActiveModal("theme");
+  };
+
+  const handleOpenAvisModal = (suiviId: number) => {
+    setSelectedSuiviId(suiviId);
+    setActiveModal("avis");
+  };
+
+  const handleCloseModal = () => {
+    setActiveModal(null);
+    setSelectedSuiviId(null);
+    setThemeToShow(null);
+  };
+
+  const handleViewAvisExperts = (avisExpert: AvisExpert[]) => {
+    setAvisExpertsToShow(avisExpert);
+    setActiveModal("avisExpert");
+  };
+
+  const handleSubmitAvis = async (idSuivi: number, avis: string) => {
+    handleCloseModal();
+    try {
+      const response = await fetch("/api/expert/avis", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ idSuivi, avis }),
+      });
+
+      if (response.ok) {
+        const responseData = await response.json();
+        toast.success(responseData.message || "Avis envoyé avec succès !");
+      } else {
+        const responseData = await response.json();
+        toast.error(
+          responseData.message || "Erreur lors de l'envoi de l'avis."
+        );
+      }
+    } catch (error) {
+      toast.error("Une erreur est survenue lors de l'envoi de l'avis");
+      console.error(error);
+    } finally{
+      window.location.reload();
+    }
+  };
+
+  return (
+    <div className={styles.container}>
+      <ToastContainer position="bottom-right" />
+      <div className={styles.filterContainer}>
+        <input
+          type="text"
+          className={styles.searchBar}
+          placeholder="Recherche..."
+          value={searchQuery}
+          onChange={(e) => setSearchQuery(e.target.value)}
+        />
+      </div>
+
+      <div className={styles.tableWrapper}>
+        <table className={styles.styledTable}>
+          <thead>
+            <tr>
+              <th>Matricule</th>
+              <th>Nom</th>
+              <th>Classe</th>
+              <th>Type de suivi</th>
+              <th>Thème</th>
+              <th>Partie analytique</th>
+              <th>Partie architecturale</th>
+              <th>Avis</th>
+            </tr>
+          </thead>
+          <tbody>
+            {currentData.map((etudiant) => (
+              <tr key={etudiant.matricule}>
+                <td>{etudiant.matricule}</td>
+                <td>
+                  {etudiant.nom} {etudiant.prenom}
+                </td>
+                <td>{etudiant.classe}</td>
+                <td>
+                  {etudiant.suivis_memoire.map((suivi) => (
+                    <div key={suivi.id_suivi}>
+                      <p>{suivi.type_suivi}</p>
+                    </div>
+                  ))}
+                </td>
+                <td>
+                  {etudiant.suivis_memoire.map((suivi) => (
+                    <button
+                      key={suivi.id_suivi}
+                      onClick={() =>
+                        handleViewTheme(
+                          suivi.theme?.theme || null,
+                          suivi.id_suivi
+                        )
+                      }
+                      className={`${styles.btnAction} ${styles.btnVoir}`}
+                    >
+                      <span className={styles.text}>Voir</span>
+                      <span className={styles.icon}>
+                        <IoEye />
+                      </span>
+                    </button>
+                  ))}
+                </td>
+                <td>
+                  {etudiant.suivis_memoire.map((suivi) => (
+                    <div key={suivi.id_suivi}>
+                      {suivi.fichiers_master?.memoire_analytique &&
+                      suivi.fichiers_master?.dossier_esquisse ? (
+                        <>
+                          <a
+                            href={`http://127.0.0.1:8000${suivi.fichiers_master.memoire_analytique}`}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className={styles.link}
+                          >
+                            Mémoire analytique
+                          </a>
+                          <a
+                            href={`http://127.0.0.1:8000${suivi.fichiers_master.dossier_esquisse}`}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className={styles.link}
+                          >
+                            Dossier esquisse
+                          </a>
+                        </>
+                      ) : (
+                        <div>En attente</div>
+                      )}
+                    </div>
+                  ))}
+                </td>
+                <td>
+                  {etudiant.suivis_memoire.map((suivi) => (
+                    <div key={suivi.id_suivi}>
+                      {suivi.fichiers_master?.memoire_final &&
+                      suivi.fichiers_master?.apd ? (
+                        <>
+                          <a
+                            href={`http://127.0.0.1:8000${suivi.fichiers_master.memoire_final}`}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className={styles.link}
+                          >
+                            Mémoire final
+                          </a>
+                          <a
+                            href={`http://127.0.0.1:8000${suivi.fichiers_master.apd}`}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className={styles.link}
+                          >
+                            APD
+                          </a>
+                        </>
+                      ) : (
+                        <div>En attente</div>
+                      )}
+                    </div>
+                  ))}
+                </td>
+                <td>
+                  {etudiant.suivis_memoire.map((suivi) => (
+                    <div>
+                      {suivi.fichiers_master.memoire_analytique ||
+                      suivi.fichiers_master.dossier_esquisse ||
+                      suivi.fichiers_master?.memoire_final ||
+                      suivi.fichiers_master?.apd ? (
+                        <>
+                          <button
+                            key={suivi.id_suivi}
+                            onClick={() => handleOpenAvisModal(suivi.id_suivi)}
+                            className={`${styles.btnAction} ${styles.btnVoir}`}
+                          >
+                            <span className={styles.text}>Émettre</span>
+                            <span className={styles.icon}>
+                              <IoBulb />
+                            </span>
+                          </button>
+                          <button
+                            key={suivi.id_suivi}
+                            onClick={() =>
+                              handleViewAvisExperts(suivi.avis_experts)
+                            }
+                            className={`${styles.btnAction} ${styles.btnVoir}`}
+                          >
+                            <span className={styles.text}>Voir</span>
+                            <span className={styles.icon}>
+                              <IoEye />
+                            </span>
+                          </button>
+                        </>
+                      ) : (
+                        <div>En attente</div>
+                      )}
+                    </div>
+                  ))}
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+
+      {filteredData.length > 0 && (
+        <div className={styles.pagination}>
+          <button
+            onClick={() => changePage(currentPage - 1)}
+            disabled={currentPage === 1}
+          >
+            <IoArrowUndo />
+          </button>
+          <span>
+            Page {currentPage} sur {totalPages}
+          </span>
+          <button
+            onClick={() => changePage(currentPage + 1)}
+            disabled={currentPage === totalPages}
+          >
+            <IoArrowRedoSharp />
+          </button>
+        </div>
+      )}
+
+      {activeModal === "theme" && (
+        <ThemeDisplay
+          isOpen={true}
+          theme={themeToShow}
+          onClose={handleCloseModal}
+        />
+      )}
+
+      {activeModal === "avis" && (
+        <ModalAddAvis
+          isOpen={true}
+          onClose={handleCloseModal}
+          onSubmitAvis={handleSubmitAvis}
+          suiviId={selectedSuiviId}
+        />
+      )}
+
+      {activeModal === "avisExpert" && avisExpertsToShow && (
+        <ModalAvisExpert
+          isOpen={true}
+          onClose={handleCloseModal}
+          avisExperts={avisExpertsToShow}
+        />
+      )}
+    </div>
+  );
+};
+
+export default TableSuiviExpertMaster;

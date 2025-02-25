@@ -1,0 +1,115 @@
+.modalOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.modalContent {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  max-width: 500px;
+  width: 100%;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  animation: fadeIn 0.3s ease;
+}
+
+.modalContent h2 {
+  margin-bottom: 20px;
+  font-size: 1.5rem;
+  color: #333;
+  text-align: center;
+}
+
+.modalContent p {
+  font-size: 1rem;
+  margin: 10px 0;
+  color: #555;
+}
+
+.modalContent p strong {
+  color: #333;
+  font-weight: bold;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.closeButton {
+  width: 150px;
+  height: 35px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  border: none;
+  border-radius: 5px;
+  box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.15);
+  transition: 200ms;
+  background-color: #007bff;
+  margin-bottom: 1rem;
+}
+
+.closeButton,
+.closeButton span {
+  transition: 200ms;
+}
+
+.text {
+  transform: translateX(35px);
+  color: white;
+  font-weight: bold;
+}
+
+.icon {
+  position: absolute;
+  border-left: 1px solid #c41b1b;
+  transform: translateX(110px);
+  height: 25px;
+  width: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.closeButton svg {
+  width: 15px;
+  fill: #eee;
+}
+
+.closeButton:hover {
+  background: #0056b3;
+}
+
+.closeButton:hover .text {
+  color: transparent;
+}
+
+.closeButton:hover .icon {
+  width: 150px;
+  border-left: none;
+  transform: translateX(0);
+}
+
+.closeButton:focus {
+  outline: none;
+}
+
+.closeButton:active .icon svg {
+  transform: scale(0.8);
+}

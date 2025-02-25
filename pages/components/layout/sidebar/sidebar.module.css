@@ -1,0 +1,64 @@
+.sidebar {
+  padding: 20px;
+  background-color: #1f2937;
+  min-height: 100%;
+  max-height: max-content;
+  width: 100%;
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+}
+
+.linkContainer {
+  margin-bottom: 20px;
+}
+
+.link {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 15px;
+  text-decoration: none;
+  font-weight: 600;
+  color: #e5e7eb;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.link:hover {
+  background: linear-gradient(to right,#9a191db6, #374151);
+  color: #ffffff;
+}
+
+.link svg {
+  margin-right: 1rem;
+  font-size: 20px;
+}
+
+.toggleIcon {
+  margin-left: auto;
+  font-size: 16px;
+  color: #9ca3af;
+}
+
+.subLinks {
+  padding-left: 20px;
+  margin-top: 10px;
+}
+
+.subLinkItem {
+  margin-bottom: 10px;
+}
+
+.subLink {
+  text-decoration: none;
+  color: #9ca3af;
+  font-size: 14px;
+  transition: color 0.3s;
+}
+
+.subLink:hover {
+  color: #60a5fa;
+}
+.active {
+  color: #60a5fa;
+}

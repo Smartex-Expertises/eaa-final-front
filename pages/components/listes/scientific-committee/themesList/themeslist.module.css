@@ -1,0 +1,33 @@
+.container {
+  margin-top: 1rem;
+}
+.theme {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.5rem;
+  background-color: white;
+}
+.noTheme {
+  text-align: center;
+}
+
+.validateButton {
+  display: inline-block;
+  outline: none;
+  cursor: pointer;
+  padding: 0 12px;
+  height: 30px;
+  max-height: 30px;
+  background: green;
+  color: #fff;
+  font-weight: 700;
+  border: 2px solid #dae3f3;
+  border-radius: 0;
+  transition-timing-function: ease-in-out;
+  transition-property: box-shadow;
+  transition-duration: 150ms;
+}
+.validateButton:hover {
+  box-shadow: 0 2px 2px rgb(39 44 52 / 12%);
+}
