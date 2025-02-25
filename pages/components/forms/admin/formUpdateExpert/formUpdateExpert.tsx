@@ -151,7 +151,7 @@ export default function FormUpdateExpert() {
       <ToastContainer position="bottom-right" />
 
       <form onSubmit={handleSubmit} className={styles.form}>
-        <h2>Informations de l'expert</h2>
+        <h2>Informations de l&apos;expert</h2>
         <div className={styles.row}>
           <div className={styles.col}>
             <div className={styles.formGroup}>

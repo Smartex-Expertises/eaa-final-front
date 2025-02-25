@@ -2,8 +2,7 @@ import React from "react";
 import LayoutAdmin from "@/layouts/admin/LayoutAdmin";
 import { useState } from "react";
 import Onglet from "@/pages/components/buttons/onglet/Onglet";
-import FormAddTeacher from "@/pages/components/forms/admin/formAddTeacher/FormAddTeacher";
-import FormFileTeachers from "@/pages/components/forms/admin/formFileTeachers/FormFileTeachers";
+
 import FormUpdateAdmin from "@/pages/components/forms/admin/formUpdateAdmin/formUpdateAdmin";
 import FormUpdatePassword from "@/pages/components/forms/admin/formUpdatePassword/formUpdatePassword";
 export default function Profile() {

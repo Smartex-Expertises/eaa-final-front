@@ -39,9 +39,7 @@ interface Encadrant2 {
   etudiants: Etudiant[];
 }
 
-interface TableProps {
-  data: Student[] | Encadrant2[];
-}
+
 
 export default function Encadrement() {
   const [encadrementStudent, setEncadrementStudent] = useState<Student[]>([]);

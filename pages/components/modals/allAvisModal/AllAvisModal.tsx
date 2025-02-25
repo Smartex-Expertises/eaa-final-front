@@ -45,7 +45,7 @@ const AllAvisModal: React.FC<AllAvisModalProps> = ({ avis, onClose }) => {
                 </div>
                 <div className={styles.alertContent}>
                   <p className={styles.timestamp}>
-                    Date d'émission :
+                    Date d&apos;émission :
                     {new Date(avisItem.created_at).toLocaleString()}
                   </p>
                   <p>Avis : {avisItem.avis}</p>

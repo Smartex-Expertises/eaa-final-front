@@ -165,7 +165,7 @@ export default function FormAddStudent() {
       <ToastContainer position="bottom-right" />
 
       <form onSubmit={handleSubmit} className={styles.form}>
-        <h2>Informations de l'étudiant</h2>
+        <h2>Informations de l&apos;étudiant</h2>
         <div className={styles.row}>
           <div className={styles.col}>
             <div className={styles.formGroup}>

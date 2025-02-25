@@ -33,7 +33,7 @@ export default async function handler(
         message: responseData.message || "Compte ajouté avec succès",
       });
     } catch (error) {
-      res.status(500).json({ message: "Erreur interne du serveur" });
+      res.status(500).json({ message: "Erreur interne du serveur",error });
     }
   } else if (req.method === "GET") {
   } else {

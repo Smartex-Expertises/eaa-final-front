@@ -115,7 +115,7 @@ export default function FormAdminAccounts() {
           </div>
           <div className={styles.col}>
             <div className={styles.formGroup}>
-              <label htmlFor="type_utilisateur">Type d'utilisateur</label>
+              <label htmlFor="type_utilisateur">Type d&apos;utilisateur</label>
               <select
                 id="type_utilisateur"
                 name="type_utilisateur"

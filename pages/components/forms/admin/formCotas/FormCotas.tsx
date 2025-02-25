@@ -119,7 +119,7 @@ export default function FormCotas() {
 
       <div className={styles.formGroup}>
         <label htmlFor="limiteLicenceArchitectes" className={styles.label}>
-          Limite d'étudiants en licence pour les architectes
+          Limite d&apos;étudiants en licence pour les architectes
         </label>
         <input
           type="number"
@@ -141,7 +141,7 @@ export default function FormCotas() {
 
       <div className={styles.formGroup}>
         <label htmlFor="limiteMasterArchitectes" className={styles.label}>
-          Limite d'étudiants en master pour les architectes
+          Limite d&apos;étudiants en master pour les architectes
         </label>
         <input
           type="number"
@@ -163,7 +163,7 @@ export default function FormCotas() {
 
       <div className={styles.formGroup}>
         <label htmlFor="limiteMasterNonArchitectes" className={styles.label}>
-          Limite d'étudiants en master pour les non architectes
+          Limite d&apos;étudiants en master pour les non architectes
         </label>
         <input
           type="number"

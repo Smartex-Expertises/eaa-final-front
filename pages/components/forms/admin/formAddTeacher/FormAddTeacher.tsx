@@ -114,7 +114,7 @@ export default function FormAddTeacher() {
     <>
       <ToastContainer position="bottom-right" />
       <form onSubmit={handleSubmit} className={styles.form}>
-        <h2>Informations de l'enseignant</h2>
+        <h2>Informations de l&apos;enseignant</h2>
         <div className={styles.row}>
           <div className={styles.col}>
             <div className={styles.formGroup}>
