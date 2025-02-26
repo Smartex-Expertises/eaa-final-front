@@ -35,7 +35,7 @@ const TableEncadrementTeacher: React.FC<TableProps> = ({ data }) => {
   const [currentPage, setCurrentPage] = useState<number>(1);
 
   const itemsPerPage = 10;
-  const totalPages = Math.ceil(data.length / itemsPerPage);
+  const totalPages = Math.ceil(data ? data.length : 0 / itemsPerPage);
 
   const openModal = (encadrant: Encadrant) => {
     setSelectedEncadrant(encadrant);
