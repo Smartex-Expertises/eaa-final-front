@@ -32,7 +32,7 @@ export default async function handler(
       }
     } catch (error) {
       res.status(500).json({
-        message: "Une erreur est survenue lors de l'envoi de l'avis",
+        message: `Erreur interne du serveur ${error}`,
       });
     }
   } else {

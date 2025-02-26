@@ -32,7 +32,7 @@ export default async function handler(
       const { token, type, premiere_connexion } = data;
 
       // Définir les cookies
-      let cookies = [];
+      const cookies = [];
       if (premiere_connexion) {
         cookies.push(
           `login=${req.body.login}; HttpOnly; Path=/; Max-Age=86400; SameSite=Strict`

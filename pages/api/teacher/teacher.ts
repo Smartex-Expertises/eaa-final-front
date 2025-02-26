@@ -34,7 +34,7 @@ export default async function handler(
         message: responseData.message || "Enseignant ajouté avec succès",
       });
     } catch (error) {
-      res.status(500).json({ message: "Erreur interne du serveur" });
+      res.status(500).json({ message: `Erreur interne du serveur ${error}` });
     }
   } else if (req.method === "GET") {
     try {
@@ -56,7 +56,7 @@ export default async function handler(
 
       res.status(200).json(data);
     } catch (error) {
-      res.status(500).json({ message: "Erreur interne du serveur" });
+      res.status(500).json({ message: `Erreur interne du serveur ${error}` });
     }
   } else {
     return res

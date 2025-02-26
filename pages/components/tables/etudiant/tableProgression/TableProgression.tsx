@@ -122,7 +122,7 @@ const TableProgression: React.FC<TableProgressionProps> = ({
             ) ? (
             <div className={styles.pending}>
               <h4 className={styles.textPending}>
-                En attente de l'upload à mis parcours
+                En attente de l&apos;upload à mis parcours
               </h4>
             </div>
           ) : (
@@ -222,7 +222,7 @@ const TableProgression: React.FC<TableProgressionProps> = ({
             ) ? (
             <div className={styles.pending}>
               <h4 className={styles.textPending}>
-                En attente de l'upload à final
+                En attente de l&apos;upload à final
               </h4>
             </div>
           ) : (
@@ -288,7 +288,7 @@ const TableProgression: React.FC<TableProgressionProps> = ({
           ) ? (
           <div className={styles.pending}>
             <h4 className={styles.textPending}>
-              En attente de l'upload à mis parcours
+              En attente de l&apos;upload à mis parcours
             </h4>
           </div>
         ) : (

@@ -84,7 +84,7 @@ export default function Topbar() {
         ) : (
           <>
             {userInfo?.photo ? (
-              <img
+              <Image
                 src={userInfo.photo}
                 alt="User Avatar"
                 className={styles.userAvatar}

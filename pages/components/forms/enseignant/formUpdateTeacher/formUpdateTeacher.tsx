@@ -45,12 +45,12 @@ export default function FormUpdateTeacher() {
 
   const [errors, setErrors] = useState<FormErrors>({});
   const [isLoading, setIsLoading] = useState<boolean>(false);
-  const [classesByNiveau, setClassesByNiveau] = useState<{
-    [key: string]: Classe[];
-  }>({
-    Licence: [],
-    Master: [],
-  });
+  // const [classesByNiveau, setClassesByNiveau] = useState<{
+  //   [key: string]: Classe[];
+  // }>({
+  //   Licence: [],
+  //   Master: [],
+  // });
 
   useEffect(() => {
     const fetchData = async () => {

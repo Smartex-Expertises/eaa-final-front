@@ -51,7 +51,7 @@ export default function Avis() {
             <div key={avis.id_avis} className={styles.alert}>
               <div className={styles.alertContent}>
                 <p className={styles.timestamp}>
-                  Date d'émission : {new Date(avis.created_at).toLocaleString()}
+                  Date d&apos;émission : {new Date(avis.created_at).toLocaleString()}
                 </p>
                 <p>Avis : {avis.avis}</p>
               </div>

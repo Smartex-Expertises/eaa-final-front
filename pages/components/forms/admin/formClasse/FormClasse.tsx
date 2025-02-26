@@ -42,7 +42,7 @@ export default function FormClasse() {
           toast.error("Aucune donnée trouvée");
         }
       } catch (error) {
-        toast.error("Une erreur est survenue lors du chargement des classes.");
+        toast.error(`Une erreur est survenue lors du chargement des classes. ${error}`);
       } finally {
         setIsLoadingGetClasse(false);
       }

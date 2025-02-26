@@ -34,7 +34,7 @@ export default async function handler(
         classe: responseData.classe,
       });
     } catch (error) {
-      res.status(500).json({ message: "Erreur interne du serveur" });
+      res.status(500).json({ message: `Erreur interne du serveur ${error}` });
     }
   } else if (req.method === "GET") {
   } else {

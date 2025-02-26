@@ -45,7 +45,7 @@ export default function ConfirmValidateModalStudent({
         );
       }
     } catch (error) {
-      toast.error("Une erreur est survenue lors de la validation du rapport.");
+      toast.error(`Une erreur est survenue lors de la validation du rapport. ${error}`);
     } finally {
       setLoading(false);
       onCancel();

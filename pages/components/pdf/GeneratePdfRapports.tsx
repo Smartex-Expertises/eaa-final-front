@@ -126,7 +126,7 @@ const GeneratePdfRapports = forwardRef<GeneratePdfRapportsRef, {}>((_, ref) => {
           );
 
           let colY = yContent;
-          data[i].forEach((text, idx) => {
+          data[i].forEach((text) => {
             doc.setFont("helvetica", "normal");
             const textOptions = {
               maxWidth: columnWidths[i] - 2 * padding,
@@ -139,6 +139,9 @@ const GeneratePdfRapports = forwardRef<GeneratePdfRapportsRef, {}>((_, ref) => {
 
         yContent += 20;
       });
+      
+      GeneratePdfRapports.displayName = "GeneratePdfRapports";
+
 
       const pdfBlob = doc.output("blob");
       const pdfUrl = URL.createObjectURL(pdfBlob);

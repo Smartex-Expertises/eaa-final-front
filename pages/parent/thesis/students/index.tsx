@@ -132,7 +132,7 @@ export default function Students() {
         <div style={{textAlign: "center"}}>Chargement...</div>
       ) : (
         <div>
-          <ChildrenTable children={students} />
+          <ChildrenTable childrens={students} />
         </div>
       )}
     </>

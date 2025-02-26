@@ -89,9 +89,9 @@ export default function TableRapportsMaster({
                     validationStatus = "Validé";
                   }
 
-                  const isPreviousReportDone =
-                    index === 0 ||
-                    rapports[index - 1]?.validation_etudiant === 1;
+                  // const isPreviousReportDone =
+                  //   index === 0 ||
+                  //   rapports[index - 1]?.validation_etudiant === 1;
                   return (
                     <tr
                       key={rapport.id_rapport}

@@ -73,10 +73,10 @@ export default function FormCotas() {
       if (response.ok) {
         toast.success("Dates limites mis à jour avec succès !");
       } else {
-        toast.error("Erreur lors de la mise à jour");
+        toast.error(`Erreur lors de la mise à jour`);
       }
     } catch (error) {
-      toast.error("Une erreur est survenue. Veuillez réessayer.");
+      toast.error(`Une erreur est survenue. Veuillez réessayer.  ${error}`);
     } finally {
       setIsLoading(false);
     }

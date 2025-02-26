@@ -67,7 +67,7 @@ export default async function handler(
         message: responseData.message || "Rapport ajouté avec succès",
       });
     } catch (error) {
-      res.status(500).json({ message: "Erreur interne du serveur" });
+      res.status(500).json({ message: `Erreur interne du serveur ${error}` });
     }
   } else {
     return res.status(405).json({ message: "Méthode non autorisée" });

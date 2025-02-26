@@ -94,7 +94,7 @@ export default function TheseLicence() {
   return (
     <div>
       {suivis.length === 0 ? (
-        <p>Aucun suivi pour l'instant</p>
+        <p>Aucun suivi pour l&apos;instant</p>
       ) : (
         <TableSuiviLicence suivis={suivis} />
       )}

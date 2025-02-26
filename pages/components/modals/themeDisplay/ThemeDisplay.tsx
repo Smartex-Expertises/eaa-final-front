@@ -24,7 +24,7 @@ const ThemeDisplay: React.FC<ThemeDisplayProps> = ({
             <IoClose />
           </span>
         </button>
-        <h2>Thème de l'étudiant</h2>
+        <h2>Thème de l&apos;étudiant</h2>
         <p style={{textAlign:"center"}}>{theme ?? "Pas de thème défini."}</p>
       </div>
     </div>

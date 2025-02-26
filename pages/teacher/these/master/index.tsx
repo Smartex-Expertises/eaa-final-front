@@ -89,7 +89,7 @@ export default function TheseMaster() {
   return (
     <div>
       {suivis.length === 0 ? (
-        <p>Aucun suivi pour l'instant</p>
+        <p>Aucun suivi pour l&apos;instant</p>
       ) : (
         <TableSuiviMaster suivis={suivis} />
       )}

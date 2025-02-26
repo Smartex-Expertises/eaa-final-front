@@ -33,7 +33,7 @@ export default async function handler(
         theme: responseData.theme,
       });
     } catch (error) {
-      res.status(500).json({ message: "Erreur interne du serveur" });
+      res.status(500).json({ message: `Erreur interne du serveur ${error}` });
     }
   } else if (req.method === "GET") {
     try {
@@ -55,7 +55,7 @@ export default async function handler(
 
       res.status(200).json(data);
     } catch (error) {
-      res.status(500).json({ message: "Erreur interne du serveur" });
+      res.status(500).json({ message: `Erreur interne du serveur ${error}` });
     }
   } else if (req.method === "DELETE") {
     const id_theme = req.body.id;
@@ -84,7 +84,7 @@ export default async function handler(
       }
     } catch (error) {
       console.error("Erreur serveur:", error);
-      return res.status(500).json({ message: "Erreur serveur" });
+      return res.status(500).json({ message: `Erreur interne du serveur ${error}` });
     }
   } else if (req.method === "PUT") {
     const id_theme = req.body.id;
@@ -108,7 +108,7 @@ export default async function handler(
       const data = await response.json();
       return res.status(200).json(data);
     } catch (error) {
-      return res.status(500).json({ message: "Une erreur s'est produite"});
+      return res.status(500).json({ message: `Erreur interne du serveur ${error}`});
     }
   } else {
     res.status(405).json({ message: "Méthode non autorisée" });

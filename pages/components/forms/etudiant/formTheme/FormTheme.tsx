@@ -40,7 +40,7 @@ export default function FormTheme() {
           toast.error("Aucune donnée trouvée");
         }
       } catch (error) {
-        toast.error("Une erreur est survenue lors du chargement des thèmes.");
+        toast.error(`Une erreur est survenue lors du chargement des thèmes. ${error}`);
       } finally {
         setIsLoadingGetThemes(false);
       }

@@ -105,7 +105,7 @@ export default function Master() {
   if (studentData.length === 0) {
     return (
       <div style={{ textAlign: "center" }}>
-        Aucun étudiant assigné pour l'instant
+        Aucun étudiant assigné pour l&apos;instant
       </div>
     );
   }

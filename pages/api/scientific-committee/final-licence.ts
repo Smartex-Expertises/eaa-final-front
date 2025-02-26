@@ -36,7 +36,7 @@ export default async function handler(
     } catch (error) {
       return res.status(500).json({
         message:
-          "Une erreur s'est produite lors de la validation du fichier de licence",
+         `Erreur interne du serveur ${error}`
       });
     }
   } else {

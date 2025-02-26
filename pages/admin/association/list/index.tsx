@@ -99,10 +99,10 @@ export default function Encadrement() {
           { method: "GET" }
         );
         const result = await response.json();
-
+        
         if (result && Object.values(result).length > 0) {
           const formattedTeachers = Object.values(result).map(
-            (encadrant: any) => ({
+            (encadrant : any) => ({
               id_encadrant: encadrant.encadrant.id_encadrant,
               matricule: encadrant.encadrant.matricule,
               nom_enseignant: encadrant.encadrant.nom_enseignant,

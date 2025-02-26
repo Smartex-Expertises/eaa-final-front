@@ -16,6 +16,7 @@ const ThemeDisplay: React.FC<ThemeDisplayProps> = ({
   suiviId,
 }) => {
   const [avis, setAvis] = useState<string>("");
+  const [loading, setLoading] = useState(false);
 
   const handleAvisChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
     setAvis(e.target.value);
@@ -30,8 +31,9 @@ const ThemeDisplay: React.FC<ThemeDisplayProps> = ({
     }
   };
 
+
   if (!isOpen) return null;
-  const [loading, setLoading] = useState(false);
+  
 
   return (
     <div className={styles.modalOverlay}>

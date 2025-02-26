@@ -100,7 +100,7 @@ export default function Licence() {
   if (studentData.length === 0) {
     return (
       <div style={{ textAlign: "center" }}>
-        Aucun étudiant assigné pour l'instant
+        Aucun étudiant assigné pour l&apos;instant
       </div>
     );
   }
@@ -111,7 +111,7 @@ export default function Licence() {
         <TableSuiviExpertLicence data={studentData} />
       ) : (
         <div style={{ textAlign: "center" }}>
-          Vous n'avez pas encore de mémoire à consulter
+          Vous n&apos;avez pas encore de mémoire à consulter
         </div>
       )}
     </div>

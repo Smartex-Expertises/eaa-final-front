@@ -114,7 +114,7 @@ interface ChildrenTableProps {
   children: Etudiant[];
 }
 
-const ChildrenTable: React.FC<ChildrenTableProps> = ({ children }) => {
+const ChildrenTable: React.FC<ChildrenTableProps> = ({ childrens }) => {
   const [themeToShow, setThemeToShow] = useState<string | null>(null);
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
   const [encadrantsToShow, setEncadrantsToShow] = useState<{
@@ -203,7 +203,7 @@ const ChildrenTable: React.FC<ChildrenTableProps> = ({ children }) => {
             </tr>
           </thead>
           <tbody>
-            {children.map((child, index) => (
+            {childrens.map((child, index) => (
               <tr
                 key={child.id_etudiant}
                 className={index % 2 === 1 ? styles.alternateRow : ""}

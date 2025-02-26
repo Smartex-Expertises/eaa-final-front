@@ -34,7 +34,7 @@ const ModalAvisExpert: React.FC<ModalAvisExpertProps> = ({
         {avisExperts.length > 0 ? (
           <div>
             {avisExperts.map((avis) => (
-              <div>
+              <div key={avis.id_avis}>
                 <hr />
                 <div key={avis.id_avis}>
                   <p>

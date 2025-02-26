@@ -25,7 +25,7 @@ export default async function handler(
 
       res.status(200).json({ message: "Mise à jour réussie" });
     } catch (error) {
-      res.status(500).json({ message: "Erreur lors de la mise à jour" });
+      res.status(500).json({ message: `Erreur interne du serveur ${error}` });
     }
   } else if (req.method === "GET") {
     try {
@@ -46,7 +46,7 @@ export default async function handler(
     } catch (error) {
       res
         .status(500)
-        .json({ message: "Erreur lors de la récupération des données" });
+        .json({ message: `Erreur interne du serveur ${error}` });
     }
   } else {
     res.status(405).json({ message: "Méthode non autorisée" });
