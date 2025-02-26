@@ -111,7 +111,7 @@ interface Etudiant {
 }
 
 interface ChildrenTableProps {
-  children: Etudiant[];
+  childrens: Etudiant[];
 }
 
 const ChildrenTable: React.FC<ChildrenTableProps> = ({ childrens }) => {
