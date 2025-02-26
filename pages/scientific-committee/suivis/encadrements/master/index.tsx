@@ -135,6 +135,7 @@ export default function Encadrements() {
       {loading ? (
         <div style={{ textAlign: "center" }}>Chargement...</div>
       ) : (
+        // @ts-ignore
         <TableSuiviMaster suivis={suivis} />
       )}
     </>
