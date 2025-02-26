@@ -164,7 +164,8 @@ const ChildrenTable: React.FC<ChildrenTableProps> = ({ childrens }) => {
 
   const handleGeneratePdf = (suivi: SuiviMemoire) => {
     if (pdfGeneratorRef.current) {
-      pdfGeneratorRef.current.generatePdf();
+      // pdfGeneratorRef.current.generatePdf();
+      pdfGeneratorRef.current.generatePdf(suivi); 
     }
   };
 
