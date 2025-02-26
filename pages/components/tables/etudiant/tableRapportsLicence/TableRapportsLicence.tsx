@@ -65,13 +65,13 @@ export default function TableRapportsLicence({
     <>
       <div className={styles.container}>
         <div className={styles.tableWrapper}>
-          {rapports.length === 0 ? (
+          {rapports && rapports.length === 0 ? (
             <p className={styles.noData}>Aucun rapport</p>
           ) : (
             <table className={styles.styledTable}>
               <thead>
                 <tr>
-                  {headers.map((header, index) => (
+                  {headers && headers.map((header, index) => (
                     <th key={index}>{header}</th>
                   ))}
                 </tr>

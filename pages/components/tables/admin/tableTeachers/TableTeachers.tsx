@@ -24,7 +24,7 @@ export default function TableTeachers({ data }: TableProps) {
 
   const itemsPerPage = 10;
 
-  const filteredData = data.filter((row) => {
+  const filteredData = data ? data.filter((row) => {
     const [matricule, nom, prenom, type, specialite, grade, telephone, email] =
       row;
 
@@ -49,7 +49,7 @@ export default function TableTeachers({ data }: TableProps) {
       );
     }
     return true;
-  });
+  }) : [];
 
   const startIndex = (currentPage - 1) * itemsPerPage;
   const endIndex = startIndex + itemsPerPage;

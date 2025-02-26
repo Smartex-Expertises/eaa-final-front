@@ -66,7 +66,7 @@ export default function TableRapportsMaster({
     <>
       <div className={styles.container}>
         <div className={styles.tableWrapper}>
-          {rapports.length === 0 ? (
+          {rapports && rapports.length === 0 ? (
             <p className={styles.noData}>Aucun rapport</p>
           ) : (
             <table className={styles.styledTable}>
@@ -78,7 +78,7 @@ export default function TableRapportsMaster({
                 </tr>
               </thead>
               <tbody>
-                {rapports.map((rapport, index) => {
+                {rapports && rapports.map((rapport, index) => {
                   let validationStatus = "";
 
                   if (rapport.id_auteur === null) {

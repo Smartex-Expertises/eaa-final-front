@@ -294,7 +294,7 @@ const AllSuivis: React.FC<AllSuivisProps> = ({ suivis }) => {
               className={styles.selectFilter}
             >
               <option value="">-- Filtrer par Classe --</option>
-              {classesToDisplay.map((classe, index) => (
+              {classesToDisplay && classesToDisplay.map((classe, index) => (
                 <option key={index} value={classe.nom}>
                   {classe.nom}
                 </option>
@@ -315,7 +315,7 @@ const AllSuivis: React.FC<AllSuivisProps> = ({ suivis }) => {
               </tr>
             </thead>
             <tbody>
-              {currentData.map((suivi, index) => (
+              {currentData && currentData.map((suivi, index) => (
                 <tr
                   key={suivi.id_suivi}
                   className={index % 2 === 1 ? styles.alternateRow : ""}

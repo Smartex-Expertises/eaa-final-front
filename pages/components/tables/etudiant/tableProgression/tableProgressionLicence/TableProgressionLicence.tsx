@@ -110,7 +110,7 @@ const TableProgressionLicence: React.FC<TableProgressionProps> = ({
   return (
     <div className={styles.tableProgression}>
       <div className={styles.sessionsRow}>
-        {seances.slice(0, 6).map((session, index) => {
+        {seances && seances.slice(0, 6).map((session, index) => {
           const status = getSessionStatus(session);
           return (
             <div className={styles.session} key={index}>
@@ -129,7 +129,7 @@ const TableProgressionLicence: React.FC<TableProgressionProps> = ({
       </div>
 
       <div className={styles.sessionsRow}>
-        {seances.slice(6, 12).map((session, index) => {
+        {seances && seances.slice(6, 12).map((session, index) => {
           const status = getSessionStatus(session);
           return (
             <div className={styles.session} key={index}>

@@ -81,7 +81,7 @@ const TableStudents = ({ data }: TableProps) => {
 
   const itemsPerPage = 10;
 
-  const filteredData = data.filter((student) => {
+  const filteredData = data ? data.filter((student) => {
     if (selectedLevel && student.niveau !== selectedLevel) {
       return false;
     }
@@ -97,7 +97,7 @@ const TableStudents = ({ data }: TableProps) => {
       );
     }
     return true;
-  });
+  }) : [] ;
 
   const startIndex = (currentPage - 1) * itemsPerPage;
   const endIndex = startIndex + itemsPerPage;
@@ -166,7 +166,7 @@ const TableStudents = ({ data }: TableProps) => {
         </div>
 
         <div className={styles.tableWrapper}>
-          {filteredData.length === 0 ? (
+          {filteredData && filteredData.length === 0 ? (
             <p className={styles.noData}>Aucun étudiant</p>
           ) : (
             <table className={styles.styledTable}>
@@ -178,7 +178,7 @@ const TableStudents = ({ data }: TableProps) => {
                 </tr>
               </thead>
               <tbody>
-                {currentData.map((student, index) => (
+                {currentData && currentData.map((student, index) => (
                   <tr
                     key={index}
                     className={index % 2 === 1 ? styles.alternateRow : ""}
@@ -208,7 +208,7 @@ const TableStudents = ({ data }: TableProps) => {
           )}
         </div>
 
-        {filteredData.length > 0 && (
+        {filteredData && filteredData.length > 0 && (
           <div className={styles.pagination}>
             <span>{`Page ${currentPage} sur ${totalPages}`}</span>
             <button

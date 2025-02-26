@@ -69,14 +69,14 @@ export default function TableExperts({ data }: TableProps) {
   };
 
   const showStudents = (students: Etudiant[]) => {
-    const formattedStudents = students.map((student) => ({
+    const formattedStudents = students ? students.map((student) => ({
       id_etudiant: student.id_etudiant,
       matricule: student.matricule,
       nom_etudiant: student.nom_etudiant,
       prenom_etudiant: student.prenom_etudiant,
       niveau: student.niveau,
       classe: student.classe,
-    }));
+    })) : [];
 
     // Vérification dans la console pour voir les données formatées
     console.log("formattedStudents:", formattedStudents);
@@ -109,7 +109,7 @@ export default function TableExperts({ data }: TableProps) {
       </div>
 
       <div className={styles.tableWrapper}>
-        {filteredData.length === 0 ? (
+        {filteredData && filteredData.length === 0 ? (
           <p className={styles.noData}>Aucun expert trouvé.</p>
         ) : (
           <table className={styles.styledTable}>
@@ -150,7 +150,7 @@ export default function TableExperts({ data }: TableProps) {
         )}
       </div>
 
-      {filteredData.length > 0 && (
+      {filteredData && filteredData.length > 0 && (
         <div className={styles.pagination}>
           <span>{`Page ${currentPage} sur ${totalPages}`}</span>
           <button

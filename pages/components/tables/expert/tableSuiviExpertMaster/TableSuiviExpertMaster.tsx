@@ -159,7 +159,7 @@ const TableSuiviExpertMaster: React.FC<TableSuiviExpertMasterProps> = ({
             </tr>
           </thead>
           <tbody>
-            {currentData.map((etudiant) => (
+            {currentData && currentData.map((etudiant) => (
               <tr key={etudiant.matricule}>
                 <td>{etudiant.matricule}</td>
                 <td>
@@ -167,14 +167,14 @@ const TableSuiviExpertMaster: React.FC<TableSuiviExpertMasterProps> = ({
                 </td>
                 <td>{etudiant.classe}</td>
                 <td>
-                  {etudiant.suivis_memoire.map((suivi) => (
+                  {etudiant && etudiant.suivis_memoire && etudiant.suivis_memoire.map((suivi) => (
                     <div key={suivi.id_suivi}>
                       <p>{suivi.type_suivi}</p>
                     </div>
                   ))}
                 </td>
                 <td>
-                  {etudiant.suivis_memoire.map((suivi) => (
+                  {etudiant && etudiant.suivis_memoire && etudiant.suivis_memoire.map((suivi) => (
                     <button
                       key={suivi.id_suivi}
                       onClick={() =>
@@ -193,7 +193,7 @@ const TableSuiviExpertMaster: React.FC<TableSuiviExpertMasterProps> = ({
                   ))}
                 </td>
                 <td>
-                  {etudiant.suivis_memoire.map((suivi) => (
+                  {etudiant && etudiant.suivis_memoire && etudiant.suivis_memoire.map((suivi) => (
                     <div key={suivi.id_suivi}>
                       {suivi.fichiers_master?.memoire_analytique &&
                       suivi.fichiers_master?.dossier_esquisse ? (
@@ -222,7 +222,7 @@ const TableSuiviExpertMaster: React.FC<TableSuiviExpertMasterProps> = ({
                   ))}
                 </td>
                 <td>
-                  {etudiant.suivis_memoire.map((suivi) => (
+                  {etudiant && etudiant.suivis_memoire && etudiant.suivis_memoire.map((suivi) => (
                     <div key={suivi.id_suivi}>
                       {suivi.fichiers_master?.memoire_final &&
                       suivi.fichiers_master?.apd ? (
@@ -251,7 +251,7 @@ const TableSuiviExpertMaster: React.FC<TableSuiviExpertMasterProps> = ({
                   ))}
                 </td>
                 <td>
-                  {etudiant.suivis_memoire.map((suivi) => (
+                  {etudiant && etudiant.suivis_memoire && etudiant.suivis_memoire.map((suivi) => (
                     <div>
                       {suivi.fichiers_master.memoire_analytique ||
                       suivi.fichiers_master.dossier_esquisse ||

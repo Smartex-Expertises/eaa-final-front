@@ -221,7 +221,7 @@ const ChildrenTable: React.FC<ChildrenTableProps> = ({ childrens }) => {
             </tr>
           </thead>
           <tbody>
-            {childrens.map((child, index) => (
+            {childrens && childrens.map((child, index) => (
               <tr
                 key={child.id_etudiant}
                 className={index % 2 === 1 ? styles.alternateRow : ""}

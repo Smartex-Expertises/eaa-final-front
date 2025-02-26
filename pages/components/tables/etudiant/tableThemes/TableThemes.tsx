@@ -137,13 +137,13 @@ export default function TableThemes({ themes, setThemes }: TableThemesProps) {
           <table className={styles.styledTable}>
             <thead>
               <tr>
-                {headers.map((header, index) => (
+                {headers && headers.map((header, index) => (
                   <th key={index}>{header}</th>
                 ))}
               </tr>
             </thead>
             <tbody>
-              {currentThemes.map((theme, index) => (
+              {currentThemes && currentThemes.map((theme, index) => (
                 <tr
                   key={theme.id_theme}
                   className={index % 2 === 1 ? styles.alternateRow : ""}

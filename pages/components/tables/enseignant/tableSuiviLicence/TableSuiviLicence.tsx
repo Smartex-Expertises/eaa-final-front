@@ -35,7 +35,7 @@ const TableSuiviLicence: React.FC<TableSuiviLicenceProps> = ({ suivis }) => {
 
   const headers = ["Nom de l'étudiant", "Directeur de mémoire", "Actions"];
 
-  const filteredSuivis = suivis.filter((suivi) => {
+  const filteredSuivis = suivis ?  suivis.filter((suivi) => {
     return (
       suivi.etudiant.nom.toLowerCase().includes(searchQuery.toLowerCase()) ||
       suivi.etudiant.prenom.toLowerCase().includes(searchQuery.toLowerCase()) ||
@@ -43,7 +43,7 @@ const TableSuiviLicence: React.FC<TableSuiviLicenceProps> = ({ suivis }) => {
         ? suivi.theme.toLowerCase().includes(searchQuery.toLowerCase())
         : false)
     );
-  });
+  }) : [];
 
   const startIndex = (currentPage - 1) * itemsPerPage;
   const endIndex = startIndex + itemsPerPage;

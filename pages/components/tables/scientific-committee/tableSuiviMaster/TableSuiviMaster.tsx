@@ -248,7 +248,7 @@ const TableSuiviMaster: React.FC<TableSuiviMasterProps> = ({ suivis }) => {
             className={styles.selectFilter}
           >
             <option value="">-- Filtrer par Classe --</option>
-            {classesToDisplay.map((classe, index) => (
+            {classesToDisplay && classesToDisplay.map((classe, index) => (
               <option key={index} value={classe.nom}>
                 {classe.nom}
               </option>

@@ -209,7 +209,7 @@ const TableSuivi: React.FC<TableSuiviProps> = ({ suivis }) => {
             className={styles.selectFilter}
           >
             <option value="">-- Filtrer par Classe --</option>
-            {classesToDisplay.map((classe, index) => (
+            {classesToDisplay && classesToDisplay.map((classe, index) => (
               <option key={index} value={classe.nom}>
                 {classe.nom}
               </option>
@@ -230,7 +230,7 @@ const TableSuivi: React.FC<TableSuiviProps> = ({ suivis }) => {
             </tr>
           </thead>
           <tbody>
-            {currentData.map((suivi) => (
+            {currentData && currentData.map((suivi) => (
               <tr key={suivi.id_suivi}>
                 <td>{suivi.etudiant.matricule}</td>
                 <td>

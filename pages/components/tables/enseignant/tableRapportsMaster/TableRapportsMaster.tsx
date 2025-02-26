@@ -103,7 +103,7 @@ export default function TableRapportsMaster({
       <ToastContainer position="bottom-right" />
       <div className={styles.container}>
         <div className={styles.tableWrapper}>
-          {rapports.length === 0 ? (
+          {rapports && rapports.length === 0 ? (
             <p className={styles.noData}>Aucun rapport</p>
           ) : (
             <table className={styles.styledTable}>
@@ -115,7 +115,7 @@ export default function TableRapportsMaster({
                 </tr>
               </thead>
               <tbody>
-                {rapports.map((rapport, index) => {
+                {rapports && rapports.map((rapport, index) => {
                   const isPreviousReportDone =
                     index === 0 ||
                     rapports[index - 1]?.validation_etudiant === 1;

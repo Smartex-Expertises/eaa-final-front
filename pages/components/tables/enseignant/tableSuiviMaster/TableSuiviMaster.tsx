@@ -41,7 +41,7 @@ const TableSuiviMaster: React.FC<TableSuiviMasterProps> = ({ suivis }) => {
     "Actions",
   ];
 
-  const filteredSuivis = suivis.filter((suivi) => {
+  const filteredSuivis = suivis ? suivis.filter((suivi) => {
     return (
       suivi.etudiant.nom.toLowerCase().includes(searchQuery.toLowerCase()) ||
       suivi.etudiant.prenom.toLowerCase().includes(searchQuery.toLowerCase()) ||
@@ -49,7 +49,7 @@ const TableSuiviMaster: React.FC<TableSuiviMasterProps> = ({ suivis }) => {
         ? suivi.theme.toLowerCase().includes(searchQuery.toLowerCase())
         : false)
     );
-  });
+  }) : [];
 
   const startIndex = (currentPage - 1) * itemsPerPage;
   const endIndex = startIndex + itemsPerPage;
@@ -91,7 +91,7 @@ const TableSuiviMaster: React.FC<TableSuiviMasterProps> = ({ suivis }) => {
       </div>
 
       <div className={styles.tableWrapper}>
-        {filteredSuivis.length === 0 ? (
+        {filteredSuivis && filteredSuivis.length === 0 ? (
           <p className={styles.noData}>Aucun suivi</p>
         ) : (
           <table className={styles.styledTable}>
@@ -103,7 +103,7 @@ const TableSuiviMaster: React.FC<TableSuiviMasterProps> = ({ suivis }) => {
               </tr>
             </thead>
             <tbody>
-              {currentSuivis.map((suivi, index) => (
+              {currentSuivis && currentSuivis.map((suivi, index) => (
                 <tr
                   key={index}
                   className={index % 2 === 1 ? styles.alternateRow : ""}
@@ -144,7 +144,7 @@ const TableSuiviMaster: React.FC<TableSuiviMasterProps> = ({ suivis }) => {
         )}
       </div>
 
-      {filteredSuivis.length > 0 && (
+      {filteredSuivis && filteredSuivis.length > 0 && (
         <div className={styles.pagination}>
           <span>{`Page ${currentPage} sur ${totalPages}`}</span>
           <button

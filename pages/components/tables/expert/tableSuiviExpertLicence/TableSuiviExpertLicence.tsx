@@ -156,7 +156,7 @@ const TableSuiviExpertLicence: React.FC<TableSuiviExpertLicenceProps> = ({
             </tr>
           </thead>
           <tbody>
-            {currentData.map((etudiant) => (
+            {currentData  && currentData.map((etudiant) => (
               <tr key={etudiant.matricule}>
                 <td>{etudiant.matricule}</td>
                 <td>
@@ -164,14 +164,14 @@ const TableSuiviExpertLicence: React.FC<TableSuiviExpertLicenceProps> = ({
                 </td>
                 <td>{etudiant.classe}</td>
                 <td>
-                  {etudiant.suivis_memoire.map((suivi) => (
+                  {etudiant && etudiant.suivis_memoire && etudiant.suivis_memoire.map((suivi) => (
                     <div key={suivi.id_suivi}>
                       <p>{suivi.type_suivi}</p>
                     </div>
                   ))}
                 </td>
                 <td>
-                  {etudiant.suivis_memoire.map((suivi) => (
+                  {etudiant && etudiant.suivis_memoire && etudiant.suivis_memoire.map((suivi) => (
                     <button
                       key={suivi.id_suivi}
                       onClick={() =>
@@ -188,7 +188,7 @@ const TableSuiviExpertLicence: React.FC<TableSuiviExpertLicenceProps> = ({
                   ))}
                 </td>
                 <td>
-                  {etudiant.suivis_memoire.map((suivi) => (
+                  {etudiant && etudiant.suivis_memoire && etudiant.suivis_memoire.map((suivi) => (
                     <div key={suivi.id_suivi}>
                       {suivi.fichiers_licence.memoire_final &&
                       suivi.fichiers_licence.apd ? (
@@ -217,7 +217,7 @@ const TableSuiviExpertLicence: React.FC<TableSuiviExpertLicenceProps> = ({
                   ))}
                 </td>
                 <td>
-                  {etudiant.suivis_memoire.map((suivi) => (
+                  {etudiant && etudiant.suivis_memoire && etudiant.suivis_memoire.map((suivi) => (
                     <div>
                       {suivi.fichiers_licence?.memoire_final ||
                       suivi.fichiers_licence?.apd ? (

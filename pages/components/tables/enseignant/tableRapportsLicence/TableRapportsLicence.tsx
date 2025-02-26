@@ -55,19 +55,19 @@ export default function TableRapportsLicence({
   return (
     <div className={styles.container}>
       <div className={styles.tableWrapper}>
-        {rapports.length === 0 ? (
+        {rapports && rapports.length === 0 ? (
           <p className={styles.noData}>Aucun rapport</p>
         ) : (
           <table className={styles.styledTable}>
             <thead>
               <tr>
-                {headers.map((header, index) => (
+                {headers && headers.map((header, index) => (
                   <th key={index}>{header}</th>
                 ))}
               </tr>
             </thead>
             <tbody>
-              {rapports.map((rapport, index) => {
+              {rapports && rapports.map((rapport, index) => {
                 console.log(rapport.id_auteur);
 
                 const validationStatus =

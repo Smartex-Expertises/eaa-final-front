@@ -48,7 +48,7 @@ const TableEncadrementTeacher: React.FC<TableProps> = ({ data }) => {
   };
 
   // Filtrage des données
-  const filteredData = data.filter((encadrant) => {
+  const filteredData = data ? data.filter((encadrant) => {
     // Filtrage par type
     if (selectedType && encadrant.type !== selectedType) {
       return false;
@@ -68,7 +68,7 @@ const TableEncadrementTeacher: React.FC<TableProps> = ({ data }) => {
       );
     }
     return true;
-  });
+  }) : [];
 
   // Pagination
   const paginatedData = filteredData.slice(
