@@ -37,6 +37,7 @@ const TableProgressionMaster: React.FC<TableProgressionProps> = ({
   seances,
   fichiers,
 }) => {
+  seances = []
   const [loading, setLoading] = useState(false);
   const [misParcoursFiles, setMisParcoursFiles] = useState<UploadedFiles>({
     memory: null,
