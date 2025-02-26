@@ -40,7 +40,7 @@ const TableProgression: React.FC<TableProgressionProps> = ({
   fichierMaster,
   fichierLicence,
   typeSuivi,
-  rapports,
+  rapports = [],
 }) => {
   const getStatusClassMaster = (status: string): string => {
     switch (status) {
@@ -87,7 +87,7 @@ const TableProgression: React.FC<TableProgressionProps> = ({
   return (
     <div className={styles.tableProgression}>
       <div className={styles.sessionsRow}>
-        {rapports.slice(0, 6).map((session, index) => (
+        {rapports && rapports.slice(0, 6).map((session, index) => (
           <div className={styles.session} key={index}>
             <div className={styles.sessionHeader}>
               <h4>{`Séance ${session.seance}`}</h4>
@@ -188,7 +188,7 @@ const TableProgression: React.FC<TableProgressionProps> = ({
         ))}
 
       <div className={styles.sessionsRow}>
-        {rapports.slice(6, 12).map((session, index) => (
+        {rapports && rapports.slice(6, 12).map((session, index) => (
           <div className={styles.session} key={index}>
             <div className={styles.sessionHeader}>
               <h4>{`Séance ${session.seance}`}</h4>
