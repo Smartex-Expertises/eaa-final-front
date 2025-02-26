@@ -69,7 +69,7 @@ const TableEncadrementStudent: React.FC<TableProps> = ({ data }) => {
   const headers = ["Matricule", "Nom", "Prénoms", "Niveau", "Classe", "Action"];
   const itemsPerPage = 10;
 
-  const filteredData = data.filter((student) => {
+  const filteredData = data ? data.filter((student) => {
     if (selectedLevel && student.niveau !== selectedLevel) {
       return false;
     }
@@ -85,7 +85,7 @@ const TableEncadrementStudent: React.FC<TableProps> = ({ data }) => {
       );
     }
     return true;
-  });
+  }) : [] ;
 
   const startIndex = (currentPage - 1) * itemsPerPage;
   const endIndex = startIndex + itemsPerPage;
