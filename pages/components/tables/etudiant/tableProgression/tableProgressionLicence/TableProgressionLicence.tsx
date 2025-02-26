@@ -33,6 +33,7 @@ const TableProgressionLicence: React.FC<TableProgressionProps> = ({
   seances,
   fichiers,
 }) => {
+  seances = []
   const [loading, setLoading] = useState(false);
   const [finalFiles, setFinalFiles] = useState<FinalFiles>({
     finalMemory: null,
@@ -169,7 +170,8 @@ const TableProgressionLicence: React.FC<TableProgressionProps> = ({
               )
               ? "auto"
               : "none",
-          }}
+            
+            }}
         >
           <div className={styles.inputSection}>
             <h3>Partie architecturale (final)</h3>
