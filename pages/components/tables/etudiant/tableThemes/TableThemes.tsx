@@ -27,7 +27,7 @@ export default function TableThemes({ themes, setThemes }: TableThemesProps) {
   const itemsPerPage = 5;
 
   // Vérifier si un thème validé existe parmi la liste
-  const isAnyThemeValidated = themes.some((theme) => theme.status === true);
+  const isAnyThemeValidated = themes ? themes.some((theme) => theme.status === true) : [];
 
   // Filtrage des thèmes en fonction du statut et de la recherche
   const filteredThemes = themes.filter((theme) => {
