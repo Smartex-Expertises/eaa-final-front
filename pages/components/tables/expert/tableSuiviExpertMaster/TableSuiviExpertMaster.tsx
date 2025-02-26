@@ -61,14 +61,14 @@ const TableSuiviExpertMaster: React.FC<TableSuiviExpertMasterProps> = ({
   const [avisExpertsToShow, setAvisExpertsToShow] = useState<
     AvisExpert[] | null
   >(null);
-  const filteredData = data.filter((etudiant) => {
+  const filteredData = data ? data.filter((etudiant) => {
     const searchLower = searchQuery.toLowerCase();
     return (
       etudiant.nom.toLowerCase().includes(searchLower) ||
       etudiant.prenom.toLowerCase().includes(searchLower) ||
       etudiant.matricule.toLowerCase().includes(searchLower)
     );
-  });
+  }) : [];
 
   const startIndex = (currentPage - 1) * itemsPerPage;
   const endIndex = startIndex + itemsPerPage;
@@ -293,7 +293,7 @@ const TableSuiviExpertMaster: React.FC<TableSuiviExpertMasterProps> = ({
         </table>
       </div>
 
-      {filteredData.length > 0 && (
+      {filteredData && filteredData.length > 0 && (
         <div className={styles.pagination}>
           <button
             onClick={() => changePage(currentPage - 1)}
