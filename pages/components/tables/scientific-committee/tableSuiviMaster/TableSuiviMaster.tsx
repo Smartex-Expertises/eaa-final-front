@@ -84,7 +84,7 @@ interface TableSuiviMasterProps {
   suivis: Suivi[];
 }
 
-const TableSuiviMaster: React.FC<TableSuiviMasterProps> = ({ suivis }) => {
+const TableSuiviMaster: React.FC<TableSuiviMasterProps> = ({ suivis = [] }) => {
   const pdfGeneratorRef = useRef<GeneratePdfRapportsRef>(null);
   const [showModalMisParcours, setShowModalMisParcours] =
     useState<boolean>(false);

@@ -24,7 +24,7 @@ type TableThemesProps = {
   studentsThemes: Student[];
 };
 
-export default function TableThemes({ studentsThemes }: TableThemesProps) {
+export default function TableThemes({ studentsThemes = [] }: TableThemesProps) {
   const [selectedStudent, setSelectedStudent] = useState<Student | null>(null);
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedLevel, setSelectedLevel] = useState("");

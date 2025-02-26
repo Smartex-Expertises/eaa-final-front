@@ -77,7 +77,7 @@ interface TableSuiviProps {
   suivis: Suivi[];
 }
 
-const TableSuivi: React.FC<TableSuiviProps> = ({ suivis }) => {
+const TableSuivi: React.FC<TableSuiviProps> = ({ suivis = [] }) => {
   const pdfGeneratorRef = useRef<GeneratePdfRapportsRef>(null);
   const [showModal, setShowModal] = useState<boolean>(false);
   const [selectedFichierId, setSelectedFichierId] = useState<number | null>(

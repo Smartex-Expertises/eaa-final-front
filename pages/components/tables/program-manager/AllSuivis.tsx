@@ -128,7 +128,7 @@ interface AllSuivisProps {
   suivis: Suivi[];
 }
 
-const AllSuivis: React.FC<AllSuivisProps> = ({ suivis }) => {
+const AllSuivis: React.FC<AllSuivisProps> = ({ suivis = [] }) => {
   const [themeToShow, setThemeToShow] = useState<string | null>(null);
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
   const [encadrantsToShow, setEncadrantsToShow] = useState<{
