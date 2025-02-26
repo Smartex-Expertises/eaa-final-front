@@ -16,7 +16,7 @@ interface TableThemesProps {
   setThemes: React.Dispatch<React.SetStateAction<Theme[]>>;
 }
 
-export default function TableThemes({ themes, setThemes }: TableThemesProps) {
+export default function TableThemes({ themes = [], setThemes }: TableThemesProps) {
   const [selectedStatus, setSelectedStatus] = useState<string>(""); // Filtre pour le statut
   const [searchQuery, setSearchQuery] = useState<string>(""); // Filtre pour la recherche
   const [currentPage, setCurrentPage] = useState<number>(1);
