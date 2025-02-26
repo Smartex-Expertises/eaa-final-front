@@ -134,6 +134,7 @@ export default function Students() {
           Chargement...
         </div>
       ) : (
+        // @ts-ignore
         <AllSuivis suivis={suivis} />
       )}
     </div>
