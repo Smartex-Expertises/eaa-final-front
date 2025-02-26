@@ -24,6 +24,19 @@ interface Enseignant {
   created_at: string;
   updated_at: string;
 }
+interface Suivi {
+  id_suivi: number;
+  etudiant: {
+    matricule: string;
+    nom: string;
+    prenom: string;
+  };
+  enseignant1: {
+    nom: string;
+    prenom: string;
+  };
+  rapports: Rapport[];
+}
 
 interface Rapport {
   id_rapport: number;
@@ -162,12 +175,28 @@ const ChildrenTable: React.FC<ChildrenTableProps> = ({ childrens }) => {
 
   const pdfGeneratorRef = useRef<GeneratePdfRapportsRef>(null);
 
-  const handleGeneratePdf = (suivi: SuiviMemoire) => {
+  // const handleGeneratePdf = (suivi: SuiviMemoire) => {
+  //   if (pdfGeneratorRef.current) {
+  //     // pdfGeneratorRef.current.generatePdf();
+  //     pdfGeneratorRef.current.generatePdf(suivi); 
+  //   }
+  // };
+
+  const handleGeneratePdf = (suiviMemoire: SuiviMemoire, matricule : any,nom : any,prenom : any) => {
     if (pdfGeneratorRef.current) {
-      // pdfGeneratorRef.current.generatePdf();
-      pdfGeneratorRef.current.generatePdf(suivi); 
+      const suivi: Suivi = {
+        ...suiviMemoire,
+        etudiant: {
+          matricule: matricule, // Remplace par les vraies valeurs si possible
+          nom: nom,
+          prenom: prenom,
+        },
+      };
+  
+      pdfGeneratorRef.current.generatePdf(suivi);
     }
   };
+  
 
   return (
     <div className={styles.container}>
@@ -234,7 +263,7 @@ const ChildrenTable: React.FC<ChildrenTableProps> = ({ childrens }) => {
                     </span>
                   </button>
                   <button
-                    onClick={() => handleGeneratePdf(child.suivis_memoire[0])}
+                    onClick={() => handleGeneratePdf(child.suivis_memoire[0], child.matricule, child.nom, child.prenom)}
                     className={`${styles.btnAction} ${styles.btnVoir}`}
                   >
                     <span className={styles.text}>Rapports</span>
