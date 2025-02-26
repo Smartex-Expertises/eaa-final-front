@@ -107,7 +107,7 @@ const TableEncadrementTeacher: React.FC<TableProps> = ({ data }) => {
       </div>
 
       <div className={styles.tableWrapper}>
-        {filteredData.length === 0 ? (
+        {filteredData && filteredData.length === 0 ? (
           <p className={styles.noData}>Aucun encadrant</p>
         ) : (
           <table className={styles.styledTable}>
@@ -144,7 +144,7 @@ const TableEncadrementTeacher: React.FC<TableProps> = ({ data }) => {
         )}
       </div>
 
-      {filteredData.length > 0 && (
+      {filteredData && filteredData.length > 0 && (
         <div className={styles.pagination}>
           <span>{`Page ${currentPage} sur ${totalPages}`}</span>
           <button
