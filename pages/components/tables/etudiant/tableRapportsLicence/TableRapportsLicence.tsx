@@ -77,7 +77,7 @@ export default function TableRapportsLicence({
                 </tr>
               </thead>
               <tbody>
-                {rapports.map((rapport, index) => {
+                {rapports && rapports.map((rapport, index) => {
                   let validationStatus = "";
 
                   if (rapport.id_auteur === null) {
