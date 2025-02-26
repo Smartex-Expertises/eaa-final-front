@@ -34,7 +34,7 @@ const AllAvisModal: React.FC<AllAvisModalProps> = ({ avis, onClose }) => {
           </button>
         </div>
         <h2 className={styles.title}>Tous les Avis des Experts</h2>
-        {avis.length > 0 ? (
+        {avis && avis.length > 0 ? (
           <div className={styles.avisList}>
             {avis.map((avisItem) => (
               <div key={avisItem.id_avis} className={styles.alert}>
