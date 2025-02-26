@@ -43,7 +43,7 @@ export default function TableExperts({ data }: TableProps) {
 
   // Utilisation de useMemo pour ne recalculer filteredData que si la recherche ou les données changent
   const filteredData = useMemo(() => {
-    return data.filter((row) => {
+    return data ? data.filter((row) => {
       if (searchQuery) {
         const searchLower = searchQuery.toLowerCase();
         return (
@@ -55,13 +55,13 @@ export default function TableExperts({ data }: TableProps) {
         );
       }
       return true;
-    });
+    }) : [];
   }, [data, searchQuery]);
 
   const startIndex = (currentPage - 1) * itemsPerPage;
   const endIndex = startIndex + itemsPerPage;
   const currentData = filteredData.slice(startIndex, endIndex);
-  const totalPages = Math.ceil(filteredData.length / itemsPerPage);
+  const totalPages = Math.ceil(filteredData ? filteredData.length : 0 / itemsPerPage);
 
   const changePage = (page: number) => {
     const nextPage = Math.max(1, Math.min(page, totalPages));
@@ -115,13 +115,13 @@ export default function TableExperts({ data }: TableProps) {
           <table className={styles.styledTable}>
             <thead>
               <tr>
-                {headers.map((header, index) => (
+                {headers && headers.map((header, index) => (
                   <th key={index}>{header}</th>
                 ))}
               </tr>
             </thead>
             <tbody>
-              {currentData.map((row, index) => (
+              {currentData && currentData.map((row, index) => (
                 <tr
                   key={index}
                   className={index % 2 === 1 ? styles.alternateRow : ""}
