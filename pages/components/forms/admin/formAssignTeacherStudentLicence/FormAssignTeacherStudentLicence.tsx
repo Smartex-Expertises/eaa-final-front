@@ -39,6 +39,7 @@ export default function FormAssignTeacherStudentLicence() {
           method: "GET",
         });
         const result = await response.json();
+        if (result && Array.isArray(result.etudiants_sans_encadrant)) {
         const filteredStudents = result.etudiants_sans_encadrant
           .filter((student: any) => student.niveau === "Licence")
           .map((student: any) => ({
@@ -48,6 +49,7 @@ export default function FormAssignTeacherStudentLicence() {
             niveau: student.niveau,
           }));
         setStudents(filteredStudents);
+        }
       } catch (error) {
         console.error("Erreur lors de la récupération des données :", error);
       }
@@ -63,14 +65,18 @@ export default function FormAssignTeacherStudentLicence() {
           method: "GET",
         });
         const result = await response.json();
+        if (result) {
         const architects = result.enseignants_disponibles.filter(
           (teacher: any) => teacher.type === "Architecte"
         );
+        if (Array.isArray(architects)){ 
         const formattedArchitects = architects.map((teacher: any) => ({
           id_enseignant: teacher.id_enseignant,
           nom_complet: `${teacher.nom} ${teacher.prenom}`,
         }));
         setTeachersArchitecte(formattedArchitects);
+      }
+      }
       } catch (error) {
         console.error("Erreur lors de la récupération des données :", error);
       }
@@ -175,11 +181,11 @@ export default function FormAssignTeacherStudentLicence() {
                 className={errors.id_etudiant ? styles.inputError : ""}
               >
                 <option value="">-- Sélectionnez un étudiant --</option>
-                {students.map((student) => (
+                {students ? students.map((student) => (
                   <option key={student.id_etudiant} value={student.id_etudiant}>
                     {student.nom} {student.prenom}
                   </option>
-                ))}
+                )) : "Pas d'etudiant" }
               </select>
               {errors.id_etudiant && (
                 <p className={styles.error}>{errors.id_etudiant}</p>
@@ -200,14 +206,14 @@ export default function FormAssignTeacherStudentLicence() {
                 className={errors.id_enseignants ? styles.inputError : ""}
               >
                 <option value="">-- Sélectionnez un encadrant --</option>
-                {teachersArchitecte.map((teacher) => (
+                {teachersArchitecte ?  teachersArchitecte.map((teacher) => (
                   <option
                     key={teacher.id_enseignant}
                     value={teacher.id_enseignant}
                   >
                     {teacher.nom_complet}
                   </option>
-                ))}
+                )) : "Pas d'expert"}
               </select>
               {errors.id_enseignants && (
                 <p className={styles.error}>{errors.id_enseignants}</p>

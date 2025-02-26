@@ -28,6 +28,7 @@ export default function FormAssignTeacherStudentMaster() {
           method: "GET",
         });
         const studentResult = await studentResponse.json();
+        if (studentResult && Array.isArray(studentResult.etudiants_sans_encadrant)) {
         const filteredStudents = studentResult.etudiants_sans_encadrant
           .filter((student: any) => student.niveau === "Master")
           .map((student: any) => ({
@@ -37,18 +38,20 @@ export default function FormAssignTeacherStudentMaster() {
             niveau: student.niveau,
           }));
         setStudents(filteredStudents);
+        }
 
         const teacherResponse = await fetch("/api/encadrement/getTeacher", {
           method: "GET",
         });
         const teacherResult = await teacherResponse.json();
+        if (teacherResult) {
         const architects = teacherResult.enseignants_disponibles.filter(
           (teacher: any) => teacher.type === "Architecte"
         );
         const universitaires = teacherResult.enseignants_disponibles.filter(
           (teacher: any) => teacher.type === "Non architecte"
         );
-
+        if (Array.isArray(architects) && Array.isArray(universitaires)){ 
         const formattedArchitects = architects.map((teacher: any) => ({
           id_enseignant: teacher.id_enseignant,
           nom_complet: `${teacher.nom} ${teacher.prenom}`,
@@ -61,6 +64,8 @@ export default function FormAssignTeacherStudentMaster() {
 
         setTeachersArchitecte(formattedArchitects);
         setTeachersUniversitaire(formattedUniversitaires);
+      }
+      }
       } catch (error) {
         console.error("Erreur lors de la récupération des données :", error);
       }
@@ -162,11 +167,11 @@ export default function FormAssignTeacherStudentMaster() {
                 className={errors.id_etudiant ? styles.inputError : ""}
               >
                 <option value="">-- Sélectionnez un étudiant --</option>
-                {students.map((student) => (
+                {students ? students.map((student) => (
                   <option key={student.id_etudiant} value={student.id_etudiant}>
                     {student.nom} {student.prenom}
                   </option>
-                ))}
+                )) : "Pas d'etudiant"}
               </select>
               {errors.id_etudiant && (
                 <p className={styles.error}>{errors.id_etudiant}</p>
@@ -187,14 +192,14 @@ export default function FormAssignTeacherStudentMaster() {
                 <option value="">
                   -- Sélectionnez un encadrant Architecte --
                 </option>
-                {teachersArchitecte.map((teacher) => (
+                {teachersArchitecte ? teachersArchitecte.map((teacher) => (
                   <option
                     key={teacher.id_enseignant}
                     value={teacher.id_enseignant}
                   >
                     {teacher.nom_complet || `${teacher.nom} ${teacher.prenom}`}
                   </option>
-                ))}
+                )) : "Pas d'encadrant Archictecte"}
               </select>
               {errors.id_enseignants_0 && (
                 <p className={styles.error}>{errors.id_enseignants_0}</p>
@@ -215,14 +220,14 @@ export default function FormAssignTeacherStudentMaster() {
                 <option value="">
                   -- Sélectionnez un encadrant non architecte --
                 </option>
-                {teachersUniversitaire.map((teacher) => (
+                {teachersUniversitaire ? teachersUniversitaire.map((teacher) => (
                   <option
                     key={teacher.id_enseignant}
                     value={teacher.id_enseignant}
                   >
                     {teacher.nom_complet || `${teacher.nom} ${teacher.prenom}`}
                   </option>
-                ))}
+                )) : "Pas d'encadrant non architecte"}
               </select>
               {errors.id_enseignants_1 && (
                 <p className={styles.error}>{errors.id_enseignants_1}</p>

@@ -41,6 +41,7 @@ export default function FormAssignExpert() {
           method: "GET",
         });
         const result = await response.json();
+        if (result && Array.isArray(result.data)) {  
         const formattedStudents = result.data.map((student: any) => ({
           id_etudiant: student.id_etudiant,
           nom: student.nom,
@@ -48,6 +49,7 @@ export default function FormAssignExpert() {
           niveau: student.niveau,
         }));
         setStudents(formattedStudents);
+      }
       } catch (error) {
         console.error("Erreur lors de la récupération des étudiants :", error);
       }
@@ -62,12 +64,14 @@ export default function FormAssignExpert() {
           method: "GET",
         });
         const result = await response.json();
+        if (result && Array.isArray(result.data)) {
         const formattedExperts = result.data.map((expert: any) => ({
           id_expert: expert.id_expert,
           nom_complet: `${expert.nom} ${expert.prenom}`,
           specialite: expert.specialite,
         }));
         setExperts(formattedExperts);
+      }
       } catch (error) {
         console.error("Erreur lors de la récupération des encadrants :", error);
       }
@@ -155,11 +159,11 @@ export default function FormAssignExpert() {
                 className={errors.id_expert ? styles.inputError : ""}
               >
                 <option value="">-- Sélectionnez un encadrant --</option>
-                {experts.map((expert) => (
+                {experts ? experts.map((expert) => (
                   <option key={expert.id_expert} value={expert.id_expert}>
                     {expert.nom_complet} ({expert.specialite})
                   </option>
-                ))}
+                )) : "Pas d'experts"}
               </select>
               {errors.id_expert && (
                 <p className={styles.error}>{errors.id_expert}</p>
@@ -179,11 +183,11 @@ export default function FormAssignExpert() {
                 className={errors.id_etudiant ? styles.inputError : ""}
               >
                 <option value="">-- Sélectionnez un étudiant --</option>
-                {students.map((student) => (
+                {students ? students.map((student) => (
                   <option key={student.id_etudiant} value={student.id_etudiant}>
                     {student.nom} {student.prenom} ({student.niveau})
                   </option>
-                ))}
+               )): "Pas d'etudiant"}
               </select>
               {errors.id_etudiant && (
                 <p className={styles.error}>{errors.id_etudiant}</p>
