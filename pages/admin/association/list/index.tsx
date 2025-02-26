@@ -57,18 +57,18 @@ export default function Encadrement() {
           "/api/encadrement/getStudentsWithTeachers",
           { method: "GET" }
         );
-        const result = await response.json();
+        const result: Record<string, Student> = await response.json();
 
         if (result && Object.values(result).length > 0) {
           const formattedStudents = Object.values(result).map(
-            (student: any) => ({
+            (student) => ({
               id_etudiant: student.id_etudiant,
               matricule: student.matricule,
               nom_etudiant: student.nom_etudiant,
               prenom_etudiant: student.prenom_etudiant,
               niveau: student.niveau,
               classe: student.classe,
-              encadrants: student.encadrants.map((encadrant: any) => ({
+              encadrants: student.encadrants.map((encadrant) => ({
                 id_enseignant: encadrant.id_enseignant,
                 nom_enseignant: encadrant.nom_enseignant,
                 prenom_enseignant: encadrant.prenom_enseignant,
