@@ -45,7 +45,7 @@ interface TableSuiviExpertLicenceProps {
 }
 
 const TableSuiviExpertLicence: React.FC<TableSuiviExpertLicenceProps> = ({
-  data,
+  data ,
 }) => {
   const [currentPage, setCurrentPage] = useState<number>(1);
   const itemsPerPage = 10;
@@ -59,14 +59,14 @@ const TableSuiviExpertLicence: React.FC<TableSuiviExpertLicenceProps> = ({
     AvisExpert[] | null
   >(null);
 
-  const filteredData = data.filter((etudiant) => {
+  const filteredData = data ?  data.filter((etudiant) => {
     const searchLower = searchQuery.toLowerCase();
     return (
       etudiant.nom.toLowerCase().includes(searchLower) ||
       etudiant.prenom.toLowerCase().includes(searchLower) ||
       etudiant.matricule.toLowerCase().includes(searchLower)
     );
-  });
+  }) : [];
 
   const startIndex = (currentPage - 1) * itemsPerPage;
   const endIndex = startIndex + itemsPerPage;
@@ -257,7 +257,7 @@ const TableSuiviExpertLicence: React.FC<TableSuiviExpertLicenceProps> = ({
         </table>
       </div>
 
-      {filteredData.length > 0 && (
+      {filteredData && filteredData.length > 0 && (
         <div className={styles.pagination}>
           <button
             onClick={() => changePage(currentPage - 1)}
