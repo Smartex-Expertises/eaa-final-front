@@ -15,7 +15,7 @@ type ThemesListProps = {
 const ThemesList: React.FC<ThemesListProps> = ({ themes, onValidateTheme }) => {
   return (
     <div className={styles.container}>
-      {themes.length > 0 ? (
+      {themes && themes.length > 0 ? (
         <div>
           {themes.map((theme) => (
             <React.Fragment key={theme.id_theme}>
