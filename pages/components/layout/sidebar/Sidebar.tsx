@@ -37,7 +37,7 @@ export default function Sidebar({ links }: SidebarProps) {
 
   return (
     <div className={styles.sidebar}>
-      {links.map((link) => (
+      {links && links.map((link) => (
         <div key={link.url} className={styles.linkContainer}>
           <div>
             <Link
