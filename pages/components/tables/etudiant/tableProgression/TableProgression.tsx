@@ -32,6 +32,11 @@ interface TableProgressionProps {
     apd: string;
     validation_finale: number;
   } | null;
+  fichierMaster: {
+    memoire_final: string;
+    apd: string;
+    validation_finale: number;
+  } | null;
   typeSuivi: string;
   rapports: Rapport[];
 }
