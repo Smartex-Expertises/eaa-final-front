@@ -72,6 +72,7 @@ const TableSuiviExpertLicence: React.FC<TableSuiviExpertLicenceProps> = ({
   const endIndex = startIndex + itemsPerPage;
   const currentData = filteredData.slice(startIndex, endIndex);
   const totalPages = Math.ceil(filteredData.length / itemsPerPage);
+  const apiUrl = process.env.NEXT_PUBLIC_URL;
 
   const changePage = (page: number) => {
     if (page >= 1 && page <= totalPages) {
@@ -194,7 +195,7 @@ const TableSuiviExpertLicence: React.FC<TableSuiviExpertLicenceProps> = ({
                       suivi.fichiers_licence.apd ? (
                         <>
                           <a
-                            href={`http://127.0.0.1:8000${suivi.fichiers_licence.memoire_final}`}
+                            href={`${apiUrl}${suivi.fichiers_licence.memoire_final}`}
                             target="_blank"
                             rel="noopener noreferrer"
                             className={styles.link}
@@ -202,7 +203,7 @@ const TableSuiviExpertLicence: React.FC<TableSuiviExpertLicenceProps> = ({
                             Mémoire final
                           </a>
                           <a
-                            href={`http://127.0.0.1:8000${suivi.fichiers_licence.apd}`}
+                            href={`${apiUrl}${suivi.fichiers_licence.apd}`}
                             target="_blank"
                             rel="noopener noreferrer"
                             className={styles.link}

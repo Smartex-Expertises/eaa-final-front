@@ -41,7 +41,7 @@ const TableProgressionLicence: React.FC<TableProgressionProps> = ({
   });
 
   const finalSubmitted = false;
-
+  const apiUrl = process.env.NEXT_PUBLIC_URL;
   const handleFinalFileChange = (
     e: ChangeEvent<HTMLInputElement>,
     field: keyof FinalFiles
@@ -70,7 +70,7 @@ const TableProgressionLicence: React.FC<TableProgressionProps> = ({
     }
 
     try {
-      const res = await fetch("http://127.0.0.1:8000/api/upload_final", {
+      const res = await fetch(`${apiUrl}/api/upload_final`, {
         method: "POST",
         headers: {
           Authorization: `Bearer ${tokenData.token}`,
@@ -248,7 +248,7 @@ const TableProgressionLicence: React.FC<TableProgressionProps> = ({
         fichiers?.validation_finale === 0 && (
           <div className={styles.pending}>
             <a
-              href={`http://127.0.0.1:8000${fichiers.memoire_final}`}
+              href={`${apiUrl}${fichiers.memoire_final}`}
               target="_blank"
               rel="noopener noreferrer"
               className={styles.link}
@@ -256,7 +256,7 @@ const TableProgressionLicence: React.FC<TableProgressionProps> = ({
               Mémoire final
             </a>
             <a
-              href={`http://127.0.0.1:8000${fichiers.apd}`}
+              href={`${apiUrl}${fichiers.apd}`}
               target="_blank"
               rel="noopener noreferrer"
               className={styles.link}
@@ -273,7 +273,7 @@ const TableProgressionLicence: React.FC<TableProgressionProps> = ({
       {fichiers?.validation_finale === 1 && (
         <div className={styles.pending}>
           <a
-            href={`http://127.0.0.1:8000${fichiers.memoire_final}`}
+            href={`${apiUrl}${fichiers.memoire_final}`}
             target="_blank"
             rel="noopener noreferrer"
             className={styles.link}
@@ -281,7 +281,7 @@ const TableProgressionLicence: React.FC<TableProgressionProps> = ({
             Mémoire final
           </a>
           <a
-            href={`http://127.0.0.1:8000${fichiers.apd}`}
+            href={`${apiUrl}${fichiers.apd}`}
             target="_blank"
             rel="noopener noreferrer"
             className={styles.link}

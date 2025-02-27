@@ -52,6 +52,7 @@ const TableSuiviExpertMaster: React.FC<TableSuiviExpertMasterProps> = ({
   const [currentPage, setCurrentPage] = useState<number>(1);
   const itemsPerPage = 10;
   const [searchQuery, setSearchQuery] = useState<string>("");
+  const apiUrl = process.env.NEXT_PUBLIC_URL;
 
   const [activeModal, setActiveModal] = useState<
     "theme" | "avis" | "avisExpert" | null
@@ -199,7 +200,7 @@ const TableSuiviExpertMaster: React.FC<TableSuiviExpertMasterProps> = ({
                       suivi.fichiers_master?.dossier_esquisse ? (
                         <>
                           <a
-                            href={`http://127.0.0.1:8000${suivi.fichiers_master.memoire_analytique}`}
+                            href={`${apiUrl}${suivi.fichiers_master.memoire_analytique}`}
                             target="_blank"
                             rel="noopener noreferrer"
                             className={styles.link}
@@ -207,7 +208,7 @@ const TableSuiviExpertMaster: React.FC<TableSuiviExpertMasterProps> = ({
                             Mémoire analytique
                           </a>
                           <a
-                            href={`http://127.0.0.1:8000${suivi.fichiers_master.dossier_esquisse}`}
+                            href={`${apiUrl}${suivi.fichiers_master.dossier_esquisse}`}
                             target="_blank"
                             rel="noopener noreferrer"
                             className={styles.link}
@@ -228,7 +229,7 @@ const TableSuiviExpertMaster: React.FC<TableSuiviExpertMasterProps> = ({
                       suivi.fichiers_master?.apd ? (
                         <>
                           <a
-                            href={`http://127.0.0.1:8000${suivi.fichiers_master.memoire_final}`}
+                            href={`${apiUrl}${suivi.fichiers_master.memoire_final}`}
                             target="_blank"
                             rel="noopener noreferrer"
                             className={styles.link}
@@ -236,7 +237,7 @@ const TableSuiviExpertMaster: React.FC<TableSuiviExpertMasterProps> = ({
                             Mémoire final
                           </a>
                           <a
-                            href={`http://127.0.0.1:8000${suivi.fichiers_master.apd}`}
+                            href={`${apiUrl}${suivi.fichiers_master.apd}`}
                             target="_blank"
                             rel="noopener noreferrer"
                             className={styles.link}

@@ -19,7 +19,7 @@ interface Rapport {
 }
 
 interface TableProgressionProps {
-  fichierMaster: {
+  fichierMaNEXT_PUBLIC_API_URLster: {
     memoire_analytique: string | null;
     dossier_esquisse: string | null;
     validation_mis_parcours: number;
@@ -42,6 +42,8 @@ const TableProgression: React.FC<TableProgressionProps> = ({
   typeSuivi,
   rapports = [],
 }) => {
+
+  const apiUrl = process.env.NEXT_PUBLIC_URL;
   const getStatusClassMaster = (status: string): string => {
     switch (status) {
       case "Effectuée":
@@ -52,6 +54,8 @@ const TableProgression: React.FC<TableProgressionProps> = ({
         return styles.notDone;
     }
   };
+
+  
 
   const getStatusClassLicence = (status: string): string => {
     switch (status) {
@@ -139,7 +143,7 @@ const TableProgression: React.FC<TableProgressionProps> = ({
               fichierMaster?.validation_mis_parcours === 0 && (
                 <div className={styles.pending}>
                   <a
-                    href={`http://127.0.0.1:8000${fichierMaster.memoire_analytique}`}
+                    href={`${apiUrl}${fichierMaster.memoire_analytique}`}
                     target="_blank"
                     rel="noopener noreferrer"
                     className={styles.link}
@@ -147,7 +151,7 @@ const TableProgression: React.FC<TableProgressionProps> = ({
                     Voir Mémoire analytique
                   </a>
                   <a
-                    href={`http://127.0.0.1:8000${fichierMaster.dossier_esquisse}`}
+                    href={`${apiUrl}${fichierMaster.dossier_esquisse}`}
                     target="_blank"
                     rel="noopener noreferrer"
                     className={styles.link}
@@ -164,7 +168,7 @@ const TableProgression: React.FC<TableProgressionProps> = ({
             {fichierMaster?.validation_mis_parcours === 1 && (
               <div className={styles.pending}>
                 <a
-                  href={`http://127.0.0.1:8000${fichierMaster.memoire_analytique}`}
+                  href={`${apiUrl}${fichierMaster.memoire_analytique}`}
                   target="_blank"
                   rel="noopener noreferrer"
                   className={styles.link}
@@ -172,7 +176,7 @@ const TableProgression: React.FC<TableProgressionProps> = ({
                   Mémoire analytique
                 </a>
                 <a
-                  href={`http://127.0.0.1:8000${fichierMaster.dossier_esquisse}`}
+                  href={`${apiUrl}${fichierMaster.dossier_esquisse}`}
                   target="_blank"
                   rel="noopener noreferrer"
                   className={styles.link}
@@ -237,7 +241,7 @@ const TableProgression: React.FC<TableProgressionProps> = ({
           fichierLicence?.validation_finale === 0 ? (
           <div className={styles.pending}>
             <a
-              href={`http://127.0.0.1:8000${fichierLicence.memoire_final}`}
+              href={`${apiUrl}${fichierLicence.memoire_final}`}
               target="_blank"
               rel="noopener noreferrer"
               className={styles.link}
@@ -245,7 +249,7 @@ const TableProgression: React.FC<TableProgressionProps> = ({
               Mémoire final
             </a>
             <a
-              href={`http://127.0.0.1:8000${fichierLicence.apd}`}
+              href={`${apiUrl}${fichierLicence.apd}`}
               target="_blank"
               rel="noopener noreferrer"
               className={styles.link}
@@ -260,7 +264,7 @@ const TableProgression: React.FC<TableProgressionProps> = ({
         ) : fichierLicence?.validation_finale === 1 ? (
           <div className={styles.pending}>
             <a
-              href={`http://127.0.0.1:8000${fichierLicence.memoire_final}`}
+              href={`${apiUrl}${fichierLicence.memoire_final}`}
               target="_blank"
               rel="noopener noreferrer"
               className={styles.link}
@@ -268,7 +272,7 @@ const TableProgression: React.FC<TableProgressionProps> = ({
               Mémoire final
             </a>
             <a
-              href={`http://127.0.0.1:8000${fichierLicence.apd}`}
+              href={`${apiUrl}${fichierLicence.apd}`}
               target="_blank"
               rel="noopener noreferrer"
               className={styles.link}
@@ -303,7 +307,7 @@ const TableProgression: React.FC<TableProgressionProps> = ({
         fichierMaster?.validation_finale === 0 ? (
         <div className={styles.pending}>
           <a
-            href={`http://127.0.0.1:8000${fichierMaster.memoire_final}`}
+            href={`${apiUrl}${fichierMaster.memoire_final}`}
             target="_blank"
             rel="noopener noreferrer"
             className={styles.link}
@@ -311,7 +315,7 @@ const TableProgression: React.FC<TableProgressionProps> = ({
             Mémoire final
           </a>
           <a
-            href={`http://127.0.0.1:8000${fichierMaster.apd}`}
+            href={`${apiUrl}${fichierMaster.apd}`}
             target="_blank"
             rel="noopener noreferrer"
             className={styles.link}
@@ -326,7 +330,7 @@ const TableProgression: React.FC<TableProgressionProps> = ({
       ) : fichierMaster?.validation_finale === 1 ? (
         <div className={styles.pending}>
           <a
-            href={`http://127.0.0.1:8000${fichierMaster.memoire_final}`}
+            href={`${apiUrl}${fichierMaster.memoire_final}`}
             target="_blank"
             rel="noopener noreferrer"
             className={styles.link}
@@ -334,7 +338,7 @@ const TableProgression: React.FC<TableProgressionProps> = ({
             Mémoire final
           </a>
           <a
-            href={`http://127.0.0.1:8000${fichierMaster.apd}`}
+            href={`${apiUrl}${fichierMaster.apd}`}
             target="_blank"
             rel="noopener noreferrer"
             className={styles.link}

@@ -90,6 +90,7 @@ const TableSuivi: React.FC<TableSuiviProps> = ({ suivis = [] }) => {
       pdfGeneratorRef.current.generatePdf(suivi);
     }
   };
+  const apiUrl = process.env.NEXT_PUBLIC_URL;
 
   const handleValidateClick = (id_fichier_licence: number) => {
     setSelectedFichierId(id_fichier_licence);
@@ -245,7 +246,7 @@ const TableSuivi: React.FC<TableSuiviProps> = ({ suivis = [] }) => {
                   suivi.fichiers_licence?.apd ? (
                     <>
                       <a
-                        href={`http://127.0.0.1:8000${suivi.fichiers_licence.memoire_final}`}
+                        href={`${apiUrl}${suivi.fichiers_licence.memoire_final}`}
                         target="_blank"
                         rel="noopener noreferrer"
                         className={styles.link}
@@ -253,7 +254,7 @@ const TableSuivi: React.FC<TableSuiviProps> = ({ suivis = [] }) => {
                         Mémoire final
                       </a>
                       <a
-                        href={`http://127.0.0.1:8000${suivi.fichiers_licence.apd}`}
+                        href={`${apiUrl}${suivi.fichiers_licence.apd}`}
                         target="_blank"
                         rel="noopener noreferrer"
                         className={styles.link}

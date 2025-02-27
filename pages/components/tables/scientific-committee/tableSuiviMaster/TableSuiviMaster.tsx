@@ -173,6 +173,7 @@ const TableSuiviMaster: React.FC<TableSuiviMasterProps> = ({ suivis = [] }) => {
   const [searchQuery, setSearchQuery] = useState<string>("");
 
   const [classesToDisplay, setClassesToDisplay] = useState<any[]>([]);
+  const apiUrl = process.env.NEXT_PUBLIC_API_URL;
 
   useEffect(() => {
     const fetchClasses = async () => {
@@ -289,7 +290,7 @@ const TableSuiviMaster: React.FC<TableSuiviMasterProps> = ({ suivis = [] }) => {
                   suivi.fichiers_master?.dossier_esquisse ? (
                     <>
                       <a
-                        href={`http://127.0.0.1:8000${suivi.fichiers_master.memoire_analytique}`}
+                        href={`${apiUrl}${suivi.fichiers_master.memoire_analytique}`}
                         target="_blank"
                         rel="noopener noreferrer"
                         className={styles.link}
@@ -297,7 +298,7 @@ const TableSuiviMaster: React.FC<TableSuiviMasterProps> = ({ suivis = [] }) => {
                         Mémoire analytique
                       </a>
                       <a
-                        href={`http://127.0.0.1:8000${suivi.fichiers_master.dossier_esquisse}`}
+                        href={`${apiUrl}${suivi.fichiers_master.dossier_esquisse}`}
                         target="_blank"
                         rel="noopener noreferrer"
                         className={styles.link}
@@ -315,7 +316,7 @@ const TableSuiviMaster: React.FC<TableSuiviMasterProps> = ({ suivis = [] }) => {
                   suivi.fichiers_master?.apd ? (
                     <>
                       <a
-                        href={`http://127.0.0.1:8000${suivi.fichiers_master.memoire_final}`}
+                        href={`${apiUrl}${suivi.fichiers_master.memoire_final}`}
                         target="_blank"
                         rel="noopener noreferrer"
                         className={styles.link}
@@ -323,7 +324,7 @@ const TableSuiviMaster: React.FC<TableSuiviMasterProps> = ({ suivis = [] }) => {
                         Mémoire final
                       </a>
                       <a
-                        href={`http://127.0.0.1:8000${suivi.fichiers_master.apd}`}
+                        href={`${apiUrl}${suivi.fichiers_master.apd}`}
                         target="_blank"
                         rel="noopener noreferrer"
                         className={styles.link}
