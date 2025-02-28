@@ -63,18 +63,18 @@ export default function LayoutTeacher({ children }: LayoutTeacherProps) {
     //     },
     //   ],
     // },
-    {
-      icon: <IoSettings />,
-      url: "#",
-      text: "Paramètres",
-      subLinks: [
-        {
-          icon: <IoSettings />,
-          url: "/teacher/settings/profile",
-          text: "Profil",
-        },
-      ],
-    },
+    // {
+    //   icon: <IoSettings />,
+    //   url: "#",
+    //   text: "Paramètres",
+    //   subLinks: [
+    //     {
+    //       icon: <IoSettings />,
+    //       url: "/teacher/settings/profile",
+    //       text: "Profil",
+    //     },
+    //   ],
+    // },
   ];
 
   return (

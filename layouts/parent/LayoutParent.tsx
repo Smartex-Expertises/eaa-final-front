@@ -65,18 +65,18 @@ export default function LayoutParent({ children }: LayoutParentProps) {
     //     },
     //   ],
     // },
-    {
-      icon: <IoSettings />,
-      url: "",
-      text: "Paramètres",
-      subLinks: [
-        {
-          icon: <IoSettings />,
-          url: "/parent/settings/profile",
-          text: "Mon profil",
-        },
-      ],
-    },
+    // {
+    //   icon: <IoSettings />,
+    //   url: "",
+    //   text: "Paramètres",
+    //   subLinks: [
+    //     {
+    //       icon: <IoSettings />,
+    //       url: "/parent/settings/profile",
+    //       text: "Mon profil",
+    //     },
+    //   ],
+    // },
   ];
 
   return (

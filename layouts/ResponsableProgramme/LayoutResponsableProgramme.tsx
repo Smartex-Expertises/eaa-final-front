@@ -49,18 +49,18 @@ export default function LayoutResponsableProgramme({
         },
       ],
     },
-    {
-      icon: <IoSettings />,
-      url: "",
-      text: "Paramètres",
-      subLinks: [
-        {
-          icon: <IoSettings />,
-          url: "/program-manager/settings/profile",
-          text: "Mon profil",
-        },
-      ],
-    },
+    // {
+    //   icon: <IoSettings />,
+    //   url: "",
+    //   text: "Paramètres",
+    //   subLinks: [
+    //     {
+    //       icon: <IoSettings />,
+    //       url: "/program-manager/settings/profile",
+    //       text: "Mon profil",
+    //     },
+    //   ],
+    // },
   ];
 
   return (

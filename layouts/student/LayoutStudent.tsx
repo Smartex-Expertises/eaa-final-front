@@ -79,18 +79,18 @@ export default function LayoutStudent({ children }: LayoutStudentProps) {
     //     },
     //   ],
     // },
-    {
-      icon: <IoSettings />,
-      url: "",
-      text: "Paramètres",
-      subLinks: [
-        {
-          icon: <IoSettings />,
-          url: "/student/settings/profile",
-          text: "Profil",
-        },
-      ],
-    },
+    // {
+    //   icon: <IoSettings />,
+    //   url: "",
+    //   text: "Paramètres",
+    //   subLinks: [
+    //     {
+    //       icon: <IoSettings />,
+    //       url: "/student/settings/profile",
+    //       text: "Profil",
+    //     },
+    //   ],
+    // },
   ];
 
   return (

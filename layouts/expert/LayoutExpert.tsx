@@ -46,18 +46,18 @@ export default function LayoutExpert({ children }: LayoutStudentProps) {
         },
       ],
     },
-    {
-      icon: <IoSettings />,
-      url: "#",
-      text: "Paramètres",
-      subLinks: [
-        {
-          icon: <IoSettings />,
-          url: "/expert/settings/profile",
-          text: "Profil",
-        },
-      ],
-    },
+    // {
+    //   icon: <IoSettings />,
+    //   url: "#",
+    //   text: "Paramètres",
+    //   subLinks: [
+    //     {
+    //       icon: <IoSettings />,
+    //       url: "/expert/settings/profile",
+    //       text: "Profil",
+    //     },
+    //   ],
+    // },
   ];
 
   return (
