@@ -38,7 +38,7 @@ interface TableProps {
   data: Admin[];
 }
 
-const TableAdmins = ({ data }: TableProps) => {
+const TableAdmins = ({ data = [] }: TableProps) => {
   const [selectedLevel, setSelectedLevel] = useState<string>("");
   const [selectedClass, setSelectedClass] = useState<string>("");
   const [searchQuery, setSearchQuery] = useState<string>("");
