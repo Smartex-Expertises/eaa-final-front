@@ -154,7 +154,7 @@ const TableAdmins = ({ data }: TableProps) => {
 
         <div className={styles.tableWrapper}>
           {data && data.length === 0 ? (
-            <p className={styles.noData}>Aucun admin</p>
+            <p className={styles.noData}>Aucun  admin</p>
           ) : (
             <table className={styles.styledTable}>
               <thead>
