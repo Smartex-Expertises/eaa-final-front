@@ -59,7 +59,40 @@ export default async function handler(
     } catch (error) {
       res.status(500).json({ message: `Erreur interne du serveur ${error}`  });
     }
-  } else {
+  } else if(req.method == 'PUT'){
+    try{ 
+
+    const body = req.body;
+
+      const response = await fetch(`${apiUrl}/updates_student/${body.id_etudiant}`, {
+        method: "PUT",
+        headers: {
+          Authorization: `Bearer ${token}`,
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(body),
+      });
+
+      const responseData = await response.json();
+
+      if (!response.ok) {
+        const errorMessage =
+          responseData.message || " Erreur lors de la mise à jour de l'étudiant";
+        return res.status(response.status).json({
+          message: errorMessage,
+        });
+      }
+
+      res.status(200).json({
+        message: responseData.message || "Etudiant modifié avec succès",
+      });
+    } catch (error) {
+      res.status(500).json({ message: `Erreur interne du serveur ${error}` });
+    }
+  
+
+
+  }else {
     return res
       .status(405)
       .json({ error: `Méthode ${req.method} non autorisée` });

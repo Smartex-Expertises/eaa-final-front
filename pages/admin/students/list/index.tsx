@@ -33,6 +33,7 @@ export default function ListeStudents() {
           method: "GET",
         });
         const result = await response.json();
+        
 
         if (result && Array.isArray(result)) {
           const formattedData = result.map((student: any) => ({

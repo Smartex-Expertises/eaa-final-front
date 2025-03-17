@@ -28,12 +28,17 @@ interface Classe {
   nom: string;
   niveau: string;
 }
-
-interface TableProps {
-  data: Student[];
+interface Admin{
+    id:string,
+    email:string,
+    type:string
 }
 
-const TableStudents = ({ data }: TableProps) => {
+interface TableProps {
+  data: Admin[];
+}
+
+const TableAdmins = ({ data }: TableProps) => {
   const [selectedLevel, setSelectedLevel] = useState<string>("");
   const [selectedClass, setSelectedClass] = useState<string>("");
   const [searchQuery, setSearchQuery] = useState<string>("");
@@ -49,64 +54,58 @@ const TableStudents = ({ data }: TableProps) => {
     Master: [],
   });
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await fetch("/api/class/class", {
-          method: "GET",
-        });
-        const data = await response.json();
-        const classesByLevel = {
-          Licence: data.data.filter(
-            (classe: any) => classe.niveau === "Licence"
-          ),
-          Master: data.data.filter((classe: any) => classe.niveau === "Master"),
-        };
-        setClassesByNiveau(classesByLevel);
-      } catch (error) {
-        console.error(error);
-      }
-    };
+//   useEffect(() => {
+//     const fetchData = async () => {
+//       try {
+//         const response = await fetch("/api/class/class", {
+//           method: "GET",
+//         });
+//         const data = await response.json();
+//         const classesByLevel = {
+//           Licence: data.data.filter(
+//             (classe: any) => classe.niveau === "Licence"
+//           ),
+//           Master: data.data.filter((classe: any) => classe.niveau === "Master"),
+//         };
+//         setClassesByNiveau(classesByLevel);
+//       } catch (error) {
+//         console.error(error);
+//       }
+//     };
 
-    fetchData();
-  }, []);
+//     fetchData();
+//   }, []);
 
   const headers = [
-    "Matricule",
-    "Nom",
-    "Prénoms",
-    "Niveau",
-    "Classe",
-    "Téléphone",
     "Email",
-    "Action",
+    "Type",
   ];
 
   const itemsPerPage = 10;
 
-  const filteredData = data ? data.filter((student) => {
-    if (selectedLevel && student.niveau !== selectedLevel) {
-      return false;
-    }
-    if (selectedClass && student.classe !== selectedClass) {
-      return false;
-    }
-    if (searchQuery) {
-      const searchLower = searchQuery.toLowerCase();
-      return (
-        student.matricule.toLowerCase().includes(searchLower) ||
-        student.nom.toLowerCase().includes(searchLower) ||
-        student.prenom.toLowerCase().includes(searchLower)
-      );
-    }
-    return true;
-  }) : [] ;
+//   const filteredData = data ? data.filter((student) => {
+//     if (selectedLevel && student.niveau !== selectedLevel) {
+//       return false;
+//     }
+//     if (selectedClass && student.classe !== selectedClass) {
+//       return false;
+//     }
+//     if (searchQuery) {
+//       const searchLower = searchQuery.toLowerCase();
+//       return (
+//         student.matricule.toLowerCase().includes(searchLower) ||
+//         student.nom.toLowerCase().includes(searchLower) ||
+//         student.prenom.toLowerCase().includes(searchLower)
+//       );
+//     }
+//     return true;
+//   }) : [] ;
 
   const startIndex = (currentPage - 1) * itemsPerPage;
   const endIndex = startIndex + itemsPerPage;
-  const currentData = filteredData.slice(startIndex, endIndex);
+  const currentData = data.slice(startIndex, endIndex);
 
-  const totalPages = Math.ceil(filteredData.length / itemsPerPage);
+  const totalPages = Math.ceil(data.length / itemsPerPage);
 
   const changePage = (page: number) => {
     if (page >= 1 && page <= totalPages) {
@@ -142,7 +141,7 @@ const TableStudents = ({ data }: TableProps) => {
   return (
     <>
       <div className={styles.container}>
-        <div className={styles.filterContainer}>
+        {/* <div className={styles.filterContainer}>
           <input
             type="text"
             className={styles.searchBar}
@@ -150,38 +149,12 @@ const TableStudents = ({ data }: TableProps) => {
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
           />
-          <div>
-            <select
-              value={selectedLevel}
-              onChange={(e) => {
-                setSelectedLevel(e.target.value);
-                setSelectedClass(""); // Reset selected class when level changes
-              }}
-              className={styles.selectFilter}
-            >
-              <option value="">-- Filtrer par Niveau --</option>
-              <option value="Licence">Licence</option>
-              <option value="Master">Master</option>
-            </select>
-
-            <select
-              value={selectedClass}
-              onChange={(e) => setSelectedClass(e.target.value)}
-              className={styles.selectFilter}
-            >
-              <option value="">-- Filtrer par Classe --</option>
-              {classesToDisplay.map((classe, index) => (
-                <option key={index} value={classe.nom}>
-                  {classe.nom}
-                </option>
-              ))}
-            </select>
-          </div>
-        </div>
+          
+        </div> */}
 
         <div className={styles.tableWrapper}>
-          {filteredData && filteredData.length === 0 ? (
-            <p className={styles.noData}>Aucun étudiant</p>
+          {data && data.length === 0 ? (
+            <p className={styles.noData}>Aucun admin</p>
           ) : (
             <table className={styles.styledTable}>
               <thead>
@@ -197,33 +170,10 @@ const TableStudents = ({ data }: TableProps) => {
                     key={index}
                     className={index % 2 === 1 ? styles.alternateRow : ""}
                   >
-                    <td>{student.matricule}</td>
-                    <td>{student.nom}</td>
-                    <td>{student.prenom}</td>
-                    <td>{student.niveau}</td>
-                    <td>{student.classe}</td>
-                    <td>{student.telephone}</td>
                     <td>{student.email}</td>
-                    <td>
-                      <button
-                        onClick={() => openModal(student.parent)}
-                        className={`${styles.btnAction} ${styles.btnVoir}`}
-                      >
-                        <span className={styles.text}>Parent</span>
-                        <span className={styles.icon}>
-                          <IoEye />
-                        </span>
-                      </button>
-                      <button
-                        onClick={() => openModalEdit(student)}
-                        className={`${styles.btnAction} ${styles.btnVoir}`}
-                      >
-                        <span className={styles.text}>Modifier</span>
-                        <span className={styles.icon}>
-                          <IoPencilSharp />
-                        </span>
-                      </button>
-                    </td>
+                    <td>{student.type}</td>
+                  
+                    
                   </tr>
                 ))}
               </tbody>
@@ -231,7 +181,7 @@ const TableStudents = ({ data }: TableProps) => {
           )}
         </div>
 
-        {filteredData && filteredData.length > 0 && (
+        {data && data.length > 0 && (
           <div className={styles.pagination}>
             <span>{`Page ${currentPage} sur ${totalPages}`}</span>
             <button
@@ -264,4 +214,4 @@ const TableStudents = ({ data }: TableProps) => {
   );
 };
 
-export default TableStudents;
+export default TableAdmins;

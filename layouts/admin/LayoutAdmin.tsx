@@ -125,6 +125,11 @@ export default function LayoutAdmin({ children }: LayoutAdminProps) {
           url: "/admin/settings/profile",
           text: "Profil",
         },
+        {
+          icon: <IoPersonSharp />,
+          url: "/admin/settings/list",
+          text: "Liste des comptes admin",
+        },
       ],
     },
   ];
